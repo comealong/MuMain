@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{97477B58-8099-3745-9759-D50C15869D6B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Projects\MuMain\src\ThirdParty\SDL\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/Projects/MuMain/src/ThirdParty/SDL/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/ThirdParty/SDL/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDependentOption.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePackageConfigHelpers.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseArguments.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePushCheckState.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFile.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLanguage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLibraryExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckStructHasMember.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSymbolExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindGit.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPkgConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\GNUInstallDirs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckFlagCommonConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\WriteBasicConfigVersionFile.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\SDL_build_config.h.intermediate;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\3rdparty.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\FindLibUSB.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\GetGitRevisionDescription.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedEmscriptenCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedMSVCCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedNokiaNGageCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\SDL3Config.cmake.in;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\macros.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlchecks.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcommands.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcompilers.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcpu.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlmanpages.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlplatform.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_build_config.h.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_revision.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/Projects/MuMain/src/ThirdParty/SDL/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/ThirdParty/SDL/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDependentOption.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePackageConfigHelpers.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseArguments.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePushCheckState.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFile.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLanguage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLibraryExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckStructHasMember.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSymbolExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindGit.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPkgConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\GNUInstallDirs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckFlagCommonConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\WriteBasicConfigVersionFile.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\SDL_build_config.h.intermediate;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\3rdparty.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\FindLibUSB.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\GetGitRevisionDescription.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedEmscriptenCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedMSVCCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedNokiaNGageCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\SDL3Config.cmake.in;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\macros.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlchecks.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcommands.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcompilers.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcpu.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlmanpages.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlplatform.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_build_config.h.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_revision.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/Projects/MuMain/src/ThirdParty/SDL/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/ThirdParty/SDL/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDependentOption.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePackageConfigHelpers.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseArguments.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakePushCheckState.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckCXXSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFile.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckIncludeFiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLanguage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLibraryExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckStructHasMember.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CheckSymbolExists.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindGit.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPkgConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\GNUInstallDirs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckCompilerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckFlagCommonConfig.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckLinkerFlag.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceCompiles.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CheckSourceRuns.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\WriteBasicConfigVersionFile.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\SDL_build_config.h.intermediate;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\3rdparty.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\FindLibUSB.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\GetGitRevisionDescription.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedEmscriptenCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedMSVCCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\PreseedNokiaNGageCache.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\SDL3Config.cmake.in;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\macros.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlchecks.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcommands.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcompilers.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlcpu.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlmanpages.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\cmake\sdlplatform.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_build_config.h.cmake;E:\Projects\MuMain\src\ThirdParty\SDL\include\build_config\SDL_revision.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\ZERO_CHECK.vcxproj">
+      <Project>{AC2C9026-8477-36A8-B6FF-E19546E1B7AF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\SDL3-static.vcxproj">
+      <Project>{610714BD-53F6-3293-944B-91D6B399C2A9}</Project>
+      <Name>SDL3-static</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

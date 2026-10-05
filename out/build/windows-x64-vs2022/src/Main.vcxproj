@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{41424D0D-3E8B-3172-833F-6D49AC12FED4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Main</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Main.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Main</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Main.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Main</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Main.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Main</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";_DEBUG;_FOREIGN_DEBUG;SPDLOG_COMPILED_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";_FOREIGN_DEBUG;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		Staging linked-target runtime DLLs</Message>
+      <Command>setlocal
+D:\DevTools\MuMain\vcpkg\vcpkg.exe z-applocal --target-binary=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug/Main.exe --installed-bin-dir=D:/DevTools/MuMain/vcpkg_installed/x64-windows/debug/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -DINPUT=E:/Projects/MuMain/src/bin/config.ini.template -DOUTPUT=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug/config.ini -P E:/Projects/MuMain/cmake/SeedConfigIfMissing.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_directory E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug/shaders
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_if_different D:/DevTools/MuMain/vcpkg_installed/x64-windows/debug/bin/libcurl-d.dll E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>/WHOLEARCHIVE:Debug\MuClient.lib;ThirdParty\SDL\Debug\SDL3-static.lib;kernel32.lib;user32.lib;ole32.lib;oleaut32.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;D:\DevTools\MuMain\fetchcontent\glm-build\glm\Debug\glm.lib;D:\DevTools\MuMain\fetchcontent\spdlog-build\Debug\spdlogd.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\debug\lib\libcrypto.lib;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-build\Debug\SDL3_ttf-static.lib;usp10.lib;gdi32.lib;rpcrt4.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\debug\lib\libcurl-d.lib;imm32.lib;vfw32.lib;dxguid.lib;opengl32.lib;glu32.lib;winmm.lib;ws2_32.lib;version.lib;shlwapi.lib;crypt32.lib;wininet.lib;urlmon.lib;turbojpeg-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:/Projects/MuMain/src/dependencies/lib/x64;E:/Projects/MuMain/src/dependencies/lib/x64/$(Configuration);E:/Projects/MuMain/src/dependencies/lib;E:/Projects/MuMain/src/dependencies/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug/Main.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Debug/Main.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";_FOREIGN_NDEBUG;LDS_PATCH_GLOBAL_100520;SPDLOG_COMPILED_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";_FOREIGN_NDEBUG;LDS_PATCH_GLOBAL_100520;SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		Staging linked-target runtime DLLs</Message>
+      <Command>setlocal
+D:\DevTools\MuMain\vcpkg\vcpkg.exe z-applocal --target-binary=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/Main.exe --installed-bin-dir=D:/DevTools/MuMain/vcpkg_installed/x64-windows/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -DINPUT=E:/Projects/MuMain/src/bin/config.ini.template -DOUTPUT=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/config.ini -P E:/Projects/MuMain/cmake/SeedConfigIfMissing.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_directory E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/shaders
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_if_different D:/DevTools/MuMain/vcpkg_installed/x64-windows/bin/libcurl.dll E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>/WHOLEARCHIVE:Release\MuClient.lib;ThirdParty\SDL\Release\SDL3-static.lib;kernel32.lib;user32.lib;ole32.lib;oleaut32.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;D:\DevTools\MuMain\fetchcontent\glm-build\glm\Release\glm.lib;D:\DevTools\MuMain\fetchcontent\spdlog-build\Release\spdlog.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\lib\libcrypto.lib;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-build\Release\SDL3_ttf-static.lib;usp10.lib;gdi32.lib;rpcrt4.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\lib\libcurl.lib;imm32.lib;vfw32.lib;dxguid.lib;opengl32.lib;glu32.lib;winmm.lib;ws2_32.lib;version.lib;shlwapi.lib;crypt32.lib;wininet.lib;urlmon.lib;turbojpeg-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:/Projects/MuMain/src/dependencies/lib/x64;E:/Projects/MuMain/src/dependencies/lib/x64/$(Configuration);E:/Projects/MuMain/src/dependencies/lib;E:/Projects/MuMain/src/dependencies/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/Main.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <MapFileName>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/Main.map</MapFileName>
+      <ProgramDataBaseFile>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/Release/Main.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";SPDLOG_COMPILED_LIB;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		Staging linked-target runtime DLLs</Message>
+      <Command>setlocal
+D:\DevTools\MuMain\vcpkg\vcpkg.exe z-applocal --target-binary=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo/Main.exe --installed-bin-dir=D:/DevTools/MuMain/vcpkg_installed/x64-windows/bin
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -DINPUT=E:/Projects/MuMain/src/bin/config.ini.template -DOUTPUT=E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo/config.ini -P E:/Projects/MuMain/cmake/SeedConfigIfMissing.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_directory E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo/shaders
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy_if_different D:/DevTools/MuMain/vcpkg_installed/x64-windows/bin/libcurl.dll E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>/WHOLEARCHIVE:RelWithDebInfo\MuClient.lib;ThirdParty\SDL\RelWithDebInfo\SDL3-static.lib;kernel32.lib;user32.lib;ole32.lib;oleaut32.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;D:\DevTools\MuMain\fetchcontent\glm-build\glm\RelWithDebInfo\glm.lib;D:\DevTools\MuMain\fetchcontent\spdlog-build\RelWithDebInfo\spdlog.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\lib\libcrypto.lib;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-build\RelWithDebInfo\SDL3_ttf-static.lib;usp10.lib;gdi32.lib;rpcrt4.lib;D:\DevTools\MuMain\vcpkg_installed\x64-windows\lib\libcurl.lib;imm32.lib;vfw32.lib;dxguid.lib;opengl32.lib;glu32.lib;winmm.lib;ws2_32.lib;version.lib;shlwapi.lib;crypt32.lib;wininet.lib;urlmon.lib;turbojpeg-static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:/Projects/MuMain/src/dependencies/lib/x64;E:/Projects/MuMain/src/dependencies/lib/x64/$(Configuration);E:/Projects/MuMain/src/dependencies/lib;E:/Projects/MuMain/src/dependencies/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo/Main.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/Projects/MuMain/out/build/windows-x64-vs2022/src/RelWithDebInfo/Main.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Projects\MuMain\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="E:\Projects\MuMain\src\source\App\Platform\Windows\Winmain.cpp" />
+    <ResourceCompile Include="E:\Projects\MuMain\src\source\App\Platform\Windows\resource.rc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\ZERO_CHECK.vcxproj">
+      <Project>{AC2C9026-8477-36A8-B6FF-E19546E1B7AF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ClientLibrary.vcxproj">
+      <Project>{832FAF17-FA8F-3964-8068-F3D95DAAFB0A}</Project>
+      <Name>ClientLibrary</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CopyAssets.vcxproj">
+      <Project>{3A466AF4-A9CD-3476-8BAD-2A802BDCA7C3}</Project>
+      <Name>CopyAssets</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\MuClient.vcxproj">
+      <Project>{D7B853D9-8492-3604-A948-78F37A71E4E3}</Project>
+      <Name>MuClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\SDL3-static.vcxproj">
+      <Project>{610714BD-53F6-3293-944B-91D6B399C2A9}</Project>
+      <Name>SDL3-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\sdl3_ttf-build\SDL3_ttf-static.vcxproj">
+      <Project>{13A0123B-455B-3092-8A36-686125A93321}</Project>
+      <Name>SDL3_ttf-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\ValidateStagedShaderBlobs.vcxproj">
+      <Project>{01CF9956-0053-3DC4-9444-4B3E7B45846E}</Project>
+      <Name>ValidateStagedShaderBlobs</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\glm-build\glm\glm.vcxproj">
+      <Project>{D3985E76-1C0C-3CCA-B6C3-31792DB12BE4}</Project>
+      <Name>glm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\spdlog-build\spdlog.vcxproj">
+      <Project>{53F7AD70-383D-3260-98A4-1EF2933D1D18}</Project>
+      <Name>spdlog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

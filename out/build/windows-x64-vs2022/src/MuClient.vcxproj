@@ -1,0 +1,748 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D7B853D9-8492-3604-A948-78F37A71E4E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>MuClient</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MuClient.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MuClient</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MuClient.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MuClient</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MuClient.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MuClient</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4828</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";_DEBUG;_FOREIGN_DEBUG;MU_HAS_DOTNET_AOT;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";SPDLOG_COMPILED_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";_FOREIGN_DEBUG;MU_HAS_DOTNET_AOT;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4828</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";_FOREIGN_NDEBUG;LDS_PATCH_GLOBAL_100520;MU_HAS_DOTNET_AOT;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";SPDLOG_COMPILED_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";_FOREIGN_NDEBUG;LDS_PATCH_GLOBAL_100520;MU_HAS_DOTNET_AOT;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/DevTools/MuMain/vcpkg_installed/x64-windows/include" /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4828</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=".dll";MU_HAS_DOTNET_AOT;MU_SHADER_DIR="E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/";SPDLOG_COMPILED_LIB;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLM_FORCE_DEPTH_ZERO_TO_ONE;_LANGUAGE_FOREIGN;_LANGUAGE_ENG;UNICODE;MU_DOTNET_LIB_EXT=\".dll\";MU_HAS_DOTNET_AOT;MU_SHADER_DIR=\"E:/Projects/MuMain/out/build/windows-x64-vs2022/shaders/\";SPDLOG_COMPILED_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\Projects\MuMain\src\source;E:\Projects\MuMain\src\source\App;E:\Projects\MuMain\src\dependencies\include;D:\DevTools\MuMain\fetchcontent\miniaudio-src;D:\DevTools\MuMain\fetchcontent\miniaudio-src\extras;E:\Projects\MuMain\src\dependencies\netcore\includes;E:\Projects\MuMain\out\build\windows-x64-vs2022\generated;E:\Projects\MuMain\src\ThirdParty\stb;E:\Projects\MuMain\src\ThirdParty;E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated;E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\include-revision;E:\Projects\MuMain\src\ThirdParty\SDL\include;D:\DevTools\MuMain\fetchcontent\glm-src;D:\DevTools\MuMain\fetchcontent\spdlog-src\include;D:\DevTools\MuMain\fetchcontent\sdl3_ttf-src\include;D:\DevTools\MuMain\vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Projects\MuMain\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/Projects/MuMain/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -SE:/Projects/MuMain -BE:/Projects/MuMain/out/build/windows-x64-vs2022 --check-stamp-file E:/Projects/MuMain/out/build/windows-x64-vs2022/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompiler.cmake.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCCompilerABI.c;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeCompilerIdDetection.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerABI.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeDetermineCompilerSupport.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindBinUtils.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeFindDependencyMacro.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseImplicitLinkInfo.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeParseLibraryArchitecture.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CMakeTestCompilerCommon.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\CrayClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Diab-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\OrangeC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\PellesC-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Renesas-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TI-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TIClang-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\CompilerId\VS-10.vcxproj.in;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindOpenSSL.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPackageMessage.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython\Support.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindPython3.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\FindZLIB.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeDetermineLinkerId.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\CMakeInspectCLinker.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Internal\FeatureTesting.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\DevTools\MuMain\cmake-4.4.3\cmake-4.4.3-windows-x86_64\share\cmake-4.4\Modules\SelectLibraryConfigurations.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfig.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLConfigVersion.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-debug.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets-release.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\CURLTargets.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\curl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\openssl\vcpkg-cmake-wrapper.cmake;D:\DevTools\MuMain\vcpkg_installed\x64-windows\share\zlib\vcpkg-cmake-wrapper.cmake;E:\Projects\MuMain\cmake\EnsureSubmodule.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\4.4.3\CMakeCCompiler.cmake;E:\Projects\MuMain\out\build\windows-x64-vs2022\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="E:\Projects\MuMain\src\source\App\Platform\DiagnosticFrameCaptureSchedule.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\App\Platform\DiagnosticFrameCaptureWriter.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\App\Platform\Windows\Local.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\App\StdAfx.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Audio\AudioPlayer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Audio\DSPlaySound.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\CameraManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\CameraMove.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\CameraProjection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\CameraState.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\CameraUtility.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\DefaultCamera.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\FreeFlyCamera.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\Frustum.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\FrustumRenderer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Camera\OrbitalCamera.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CSParts.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CharInfoBalloon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CharInfoBalloonMng.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CharMakeWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CharSelMainWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Character\CharacterManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Input\ImeInput.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Input\Input.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Input\KeyState.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Math\ZzzMathLib.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\Audio\MiniAudioBackend.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\Audio\MiniAudioImpl.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\ErrorDialog.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\GdiText.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\GroundTruthCapture.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\MuPlatform.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\PathResolve.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\PlatformCrypto.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\ScopedSystemCursor.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\ServerPort.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\WinIni.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\WinMM.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\WinNls.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\WinUser.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\sdl3\SDLEventLoop.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\sdl3\SDLKeyboardState.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\sdl3\SDLWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Platform\win32\PlatformLibrary.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Text\TextLineWrap.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Text\Utf8.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Text\WideString.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Time\CTimCheck.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Time\FrameTimerScheduler.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Time\MuTimer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Time\Timer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\CpuUsage.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\KeyGenerator.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Log\ErrorReport.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Log\MuLogger.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Log\SdlLogBridge.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Log\WindowsConsole.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Log\muConsoleDebug.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Observer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\PList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\PlatformInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\Random.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\UsefulDef.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Core\Utilities\_GlobalFunctions.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\CommonDataSaver.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\DataFileIO.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\DataIssueReport.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\EffectData\EffectDataHandler.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\EffectData\EffectTypeStorage.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemBmdImport.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemDataExportAsCSV.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemDataExportS6E3.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemDataHandler.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemDataLoader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemDataSaver.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemJsonStorage.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemModelLoader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\ItemData\ItemModelProblem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\LoadData.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\SkillData\SkillDataExportAsCSV.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\SkillData\SkillDataExportS6E3.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\SkillData\SkillDataHandler.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\SkillData\SkillDataLoader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\SkillData\SkillDataSaver.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\DataHandler\TextFile.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameConfig\GameConfig.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameConfig\GameConfigValidation.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\Common\LocalizedString.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\EffectCreateParams.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\EffectCreateParamsJson.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\EffectTypeCatalogue.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\EffectTypeSymbols.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\EffectTypesJson.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\GlowColorList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\EffectData\GlowColors.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemAttributeConversion.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemDataIssue.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemDataValidation.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemDatabase.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemEnumNames.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemJsonCommon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemJsonFormat.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelDatabase.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelDisplayJson.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelGlowJson.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelJsonFormat.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelJsonValues.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemModelValueReader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\GameData\ItemData\ItemTextureFiles.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Data\Translation\MultiLanguage.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\Connection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\DotNetMessageFormat.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\PacketFunctions_ChatServer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\PacketFunctions_ClientToServer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\PacketFunctions_ConnectServer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Dotnet\PacketFunctions_Custom.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\AI\AngleMath.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\AI\GOBoid.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\AI\ZzzAI.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\AnimationTaskPool.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\EditObjects.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzCharacter.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzInfomation.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzInterface.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzObject.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\ZzzOpenData.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\w_CharacterInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Object\w_ObjectInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Pathing\zzzpath.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Engine\Physics\PhysicsManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\ExternalObject\Leaf\xstreambuf.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Automation\Attack.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Automation\Movement.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Automation\Pickup.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Automation\Skill.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Buffs\w_Buff.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Buffs\w_BuffScriptLoader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Buffs\w_BuffStateSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Buffs\w_BuffStateValueControl.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Buffs\w_BuffTimeControl.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Combat\ClassAttack.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Combat\CombatTarget.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Combat\DuelMgr.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Combat\SkillCast.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Combat\SkillExecution.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Commands\ChatCommandCatalog.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Commands\ChatCommandExecution.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Commands\ChatCommandFavourites.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Commands\ChatCommandTemplate.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\CSChaosCastle.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\CSEventMatch.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\Cinematic\CDirection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\Cinematic\CKANTURUDirection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\Cinematic\CMVP1stDirection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\Cinematic\DirectionTurning.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\Event.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\MatchEvent.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\NewBloodCastleSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\NewChaosCastleSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Events\w_CursedTemple.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\CComGem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\CSItemOption.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ChangeRingManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\EquipmentRestrictions.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ItemAddOptioninfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ItemCategories.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ItemDisplayCategories.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ItemManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\MixMgr.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\PersonalShopTitleImp.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\ShopRestrictions.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Items\TradeRestrictions.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\NPCs\npcBreeder.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\NPCs\npcCatapult.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\NPCs\npcGateSwitch.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\CSPetSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\GIPetManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_BasePet.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionCollecter.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionCollecter_Add.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionDemon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionRound.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionStand.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetActionUnicorn.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Pets\w_PetProcess.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Quests\CSQuest.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Quests\DialogStructure.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Quests\GM3rdChangeUp.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Quests\QuestMng.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Skills\SkillEffectMgr.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Skills\SkillManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Skills\SummonSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Social\GambleSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Social\MonkSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameLogic\Social\PartyManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\FileDownloader\CurlFileDownloader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\InGameShopSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSBuyConfirm.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSBuyPackageItem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSBuySelectItem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSCommon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSDeleteItemConfirm.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSGiftStorageItemInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSSendGift.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSSendGiftConfirm.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSStorageItemInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSUseBuffConfirm.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\MsgBoxIGSUseItemConfirm.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\NewUIInGameShop.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\BannerInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\BannerInfoList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\BannerListManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\FTPFileDownLoader.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ListManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopCategory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopCategoryList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopListManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopPackage.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopPackageList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopProduct.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\ShopProductList.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\StringMethod.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\StringToken.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\interface\PathMethod\Path.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\GameShop\ShopListManager\interface\WZResult\WZResult.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Guild\GuildCache.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Guild\NewUIGuildInfoWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Guild\NewUIGuildMakeWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Guild\UIGuildInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Guild\UIGuildMaster.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Input\Selection.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\MUHelper\MuHelper.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\MUHelper\MuHelperData.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\IncomingPacketQueue.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\MoveCommandData.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Reconnect\ReconnectManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\CSMapServer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\ServerGroup.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\ServerInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\ServerListManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\SocketSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\TransformViewportEntry.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Network\Server\WSclient.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\Behaviors\EffectBehaviors.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\Behaviors\MoveHandlers.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\EffectRegistry.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ParticleDrawOrder.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffect.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectBlurSpark.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectFireLeave.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectJoint.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectMagicSkill.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectParticle.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectPoint.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\ZzzEffectPointer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Effects\zzzeffectsprite.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Items\ItemDisplay.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Items\ItemEffects.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Items\ItemGlow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Items\ItemRenderStyles.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\BoneManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\SMD.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\SMD2BMD.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\ShadowVolume.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\SideHair.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Models\ZzzBMD.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Renderer\FramePixelReadback.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Renderer\GLCompatShim.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Renderer\MuRendererSDLGpu.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Renderer\SdlGpuPixelFormat.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Renderer\SdlGpuReplayState.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Sprites\GlobalBitmap.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Sprites\Sprite.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Sprites\TextureScript.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Terrain\CSWaterTerrain.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Terrain\ZzzLodTerrain.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Text\CUIRenderTextSDLTtf.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Text\SdlTtfFontSet.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Text\SdlTtfTextCache.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Textures\ZzzOpenglUtil.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Render\Textures\ZzzTexture.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\CharacterScene.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\LoadingScene.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\LoginScene.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\MainScene.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\SceneCommon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\SceneCore.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\SceneManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\SceneNames.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\ScreenshotCaptureState.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\Scenes\WebzenScene.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Chat\Chat.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Chat\ChatInput.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Chat\Whisper.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Combat\MonsterHealthBar.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\TextSearch.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIControls.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIDefaultBase.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIGateKeeper.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIGuardsMan.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIJewelHarmony.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIMapName.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIMng.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIPopup.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UISenatus.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Legacy\UIWindows.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Character\NewUICharacterInfoWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Character\NewUINameWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Character\NewUIPetInfoWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUICastleWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUIDuelWatchMainFrameWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUIDuelWatchUserListWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUIDuelWatchWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUIDuelWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUIGuardWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUISeigeWarfare.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUISiegeWarBase.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUISiegeWarCommander.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUISiegeWarObserver.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Combat\NewUISiegeWarSoldier.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUIChatCommandWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUICommonMessageBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUICustomMessageBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUIHelpWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUIMessageBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\NewUIWindowMenu.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Dialogs\ReconnectDialog.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIBattleSoccerScore.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIBloodCastleEnter.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIBloodCastleTime.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUICatapultWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIChaosCastleTime.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUICryWolf.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUICursedTempleEnter.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUICursedTempleResult.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUICursedTempleSystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIDoppelGangerFrame.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIDoppelGangerWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIEnterDevilSquare.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIExchangeLuckyCoin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIGateSwitchWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIGoldBowmanLena.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIGoldBowmanWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIKanturuEvent.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Events\NewUIRegistrationLuckyCoin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIBuffWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIChatLogWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUICommandWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIGensRanking.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIHeroPositionInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIHotKey.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIMainFrameWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIMasterLevel.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIMiniMap.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIMoveCommandWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\NewUIQuickCommandWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\Notices.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\Skills\SkillTooltip.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\HUD\Skills\SkillTooltipModel.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\HeldItemPlacement.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIInventoryActionController.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIInventoryCtrl.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIInventoryExtension.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIItemEnduranceInfo.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIItemExplanationWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIItemMng.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUILuckyItemWnd.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIMixInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIMyInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIMyShopInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIPurchaseShopInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUISetItemExplanation.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIStorageInventory.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIStorageInventoryExt.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUITrade.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Inventory\NewUIUnitedMarketPlaceWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NPCs\NewUIEmpireGuardianNPC.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NPCs\NewUIEmpireGuardianTimer.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NPCs\NewUIGatemanWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NPCs\NewUINPCDialogue.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NPCs\NewUINPCShop.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUI3DRenderMng.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUICommon.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUIGroup.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUIManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUIMuHelper.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\NewUISystem.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Options\NewUIOptionWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Party\NewUIFriendWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Party\NewUIPartyInfoWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Party\NewUIPartyListWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Quests\NewUIMyQuestInfoWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Quests\NewUINPCQuest.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Quests\NewUIQuestProgress.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Quests\NewUIQuestProgressByEtc.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\UILayoutPolicy.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUIButton.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUIChatInputBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUIComboBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUIRenderNumber.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUIScrollBar.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUISlideWindow.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\NewUI\Widgets\NewUITextBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Scaling\UITransform.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Widgets\Button.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Widgets\GaugeBar.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Widgets\Slider.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Widgets\Win.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Widgets\WinEx.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\CBTMessageBox.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\CreditWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\LoginMainWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\LoginWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\MsgWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\OptionWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\RememberPasswordPrompt.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\ServerMsgWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\ServerSelWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\UI\Windows\SysMenuWin.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMAida.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMBattleCastle.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMCryingWolf2nd.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMCrywolf1st.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMDoppelGanger1.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMDoppelGanger2.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMDoppelGanger3.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMDoppelGanger4.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMDuelArena.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMEmpireGuardian1.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMEmpireGuardian2.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMEmpireGuardian3.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMEmpireGuardian4.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMHellas.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMHuntingGround.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMKarutan1.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMNewTown.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMSantaTown.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMSwampOfQuiet.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GMUnitedMarketPlace.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GM_Kanturu_1st.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GM_Kanturu_2nd.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GM_Kanturu_3rd.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GM_PK_Field.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\GameMaps\GM_Raklion.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\MapInfra\MapManager.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\MapInfra\PortalMgr.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\src\source\World\MapInfra\w_MapProcess.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\All.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Dialog.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Editor.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Game.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Metadata.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\ZERO_CHECK.vcxproj">
+      <Project>{AC2C9026-8477-36A8-B6FF-E19546E1B7AF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\CheckGLWrapperMonopoly.vcxproj">
+      <Project>{0A54982F-3E6E-3A94-B55F-AE0C2E27F744}</Project>
+      <Name>CheckGLWrapperMonopoly</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\GenWireSizes.vcxproj">
+      <Project>{A0C4A994-94C9-39BC-BCF8-13EBBE62CD6A}</Project>
+      <Name>GenWireSizes</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ResxGen.vcxproj">
+      <Project>{81CC6171-E886-3DE3-BF5F-34C906D85632}</Project>
+      <Name>ResxGen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\src\ThirdParty\SDL\SDL3-static.vcxproj">
+      <Project>{610714BD-53F6-3293-944B-91D6B399C2A9}</Project>
+      <Name>SDL3-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\sdl3_ttf-build\SDL3_ttf-static.vcxproj">
+      <Project>{13A0123B-455B-3092-8A36-686125A93321}</Project>
+      <Name>SDL3_ttf-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\glm-build\glm\glm.vcxproj">
+      <Project>{D3985E76-1C0C-3CCA-B6C3-31792DB12BE4}</Project>
+      <Name>glm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\DevTools\MuMain\fetchcontent\spdlog-build\spdlog.vcxproj">
+      <Project>{53F7AD70-383D-3260-98A4-1EF2933D1D18}</Project>
+      <Name>spdlog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
