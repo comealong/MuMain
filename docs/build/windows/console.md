@@ -6,6 +6,10 @@ VS** (so `cl`, CMake, and Ninja are on `PATH`), using the bundled presets.
 See [the build guide](../README.md) for shared concepts. To cross-compile the
 Windows client from Linux/WSL instead, see [wsl.md](wsl.md).
 
+For the D-drive MSVC installation used on this machine, including the local
+dependency layout and first-build troubleshooting, see
+[local MSVC setup on D:](local-msvc-d-drive.md).
+
 ## Prerequisites
 
 - Visual Studio C++ build tools (CMake + Ninja).
