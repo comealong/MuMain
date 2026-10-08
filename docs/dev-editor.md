@@ -133,7 +133,8 @@ walkability attributes, and world objects, plus a top-down minimap capture -
 saving back to the game's own on-disk formats. See
 [`src/MuEditor/UI/MapEditor/MAP_EDITOR.md`](../src/MuEditor/UI/MapEditor/MAP_EDITOR.md)
 for the full usage guide (tabs, save targets, and the client/server attribute
-merge workflow).
+merge workflow). For model and texture formats and external tooling, see
+[`art-assets.md`](art-assets.md).
 
 ---
 

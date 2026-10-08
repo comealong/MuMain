@@ -88,3 +88,11 @@ docs/reviews/
 
 # In-game test runner output (docs/in-game-tests.md)
 in-game-test-results/
+
+# Local Python environment and generated files for the art pipeline.
+.venv/
+.agents/skills/mu-art-pipeline/scripts/**/__pycache__/
+/*.egg-info/
+/dist/
+tools/art_pipeline/workspace/*
+!tools/art_pipeline/workspace/README.md
