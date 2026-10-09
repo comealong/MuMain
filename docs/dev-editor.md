@@ -14,24 +14,36 @@ Developers and modders. The DevEditor lets you live-tune camera FOV, far
 plane, fog, 2D culling trapezoids, terrain/object render distances, and a
 suite of debug visualisations - without rebuilding.
 
-It is **debug-only**:
+It is a **developer-build feature**:
 
-- Built only when `_EDITOR` is defined (see [Build Configurations in
-  `README.md`](../README.md#build-configurations)).
+- Enable it with the CMake option `ENABLE_EDITOR=ON`; the
+  `windows-x64-mueditor` and `windows-x86-mueditor` presets do this. CMake adds
+  the MuEditor sources and ImGui dependency, and defines `_EDITOR` for the
+  client target. See [Windows - Visual Studio](build/windows/visual-studio.md)
+  for the VS preset workflow.
+- Do not add `_EDITOR` only to a generated `.vcxproj`: that does not enable
+  CMake's editor source and dependency selection, and CMake can overwrite the
+  generated project.
 - Requires the ImGui submodule (`git submodule update --init`).
-- Not present in Release builds.
+- Editor presets can build Debug or Release. Player presets set
+  `ENABLE_EDITOR=OFF`, so those clients do not contain the editor.
 
 ---
 
 ## 2. Opening it
 
-Two ways:
+Open the editor in any of these ways:
 
-- **Press F12** in-game.
-- Start the client with `--editor` to launch with the editor enabled (or
-  toggle later with F12).
+- **Press F12** in-game to toggle it.
+- Start the client with `--editor` to open it at startup.
+- When the editor is closed, click the small **Open Editor** button in the
+  top-right.
 
-There is also an **on-screen toggle button** in the top-right of the window.
+Once the toolbar is open, choose **Map Editor** to open the map tools.
+
+MuEditor runs inside the regular client. Enabling it does not bypass login,
+change the server connection, or start a local server; edit the map loaded by
+the client after entering the relevant world.
 
 The editor is rendered with ImGui and consumes input over the game
 (see `MuInputBlockerCore.cpp` for the input-routing logic).

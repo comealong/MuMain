@@ -1,0 +1,162 @@
+{
+  "archived_on": "2026-10-09",
+  "scope": "Dark Wizard Class01 / shared Player / right-hand static Sword01 / actor scale 1",
+  "git_head": "38bb6e2f2dd05f4c4ac7d65db81cb658c3fa7fdc",
+  "note": "Working tree files may differ from HEAD; use the recorded byte hashes for exact provenance.",
+  "attachment": {
+    "source": "Sword01.bmd",
+    "socket": 33,
+    "shape_shared_with_reference": true,
+    "scale": 1,
+    "attachment_mode": "client_held_Link_false",
+    "extra_rotation_degrees": [
+      0,
+      0,
+      0
+    ],
+    "extra_translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "preview_checks": [
+    {
+      "action": 4,
+      "key": 0,
+      "dwarf_weapon_vertex_error": 0.000056267008915256156,
+      "reference_weapon_vertex_error": 0.00006901656664126676
+    },
+    {
+      "action": 17,
+      "key": 3,
+      "dwarf_weapon_vertex_error": 0.000024917536862290035,
+      "reference_weapon_vertex_error": 0.00003163029217745361
+    },
+    {
+      "action": 26,
+      "key": 3,
+      "dwarf_weapon_vertex_error": 0.000026701488579305988,
+      "reference_weapon_vertex_error": 0.00005837537349862032
+    },
+    {
+      "action": 39,
+      "key": 1,
+      "dwarf_weapon_vertex_error": 0.000028328048315984233,
+      "reference_weapon_vertex_error": 0.00004304678567734754
+    },
+    {
+      "action": 39,
+      "key": 4,
+      "dwarf_weapon_vertex_error": 0.00007608355059574023,
+      "reference_weapon_vertex_error": 0.00008962502361242741
+    },
+    {
+      "action": 40,
+      "key": 3,
+      "dwarf_weapon_vertex_error": 0.000046292186354435216,
+      "reference_weapon_vertex_error": 0.00006056851223945614
+    }
+  ],
+  "maximum_preview_weapon_vertex_error": 0.00008962502361242741,
+  "bundle_validation": {
+    "passed": true,
+    "original_assets_unchanged": true,
+    "actions": 284,
+    "rotation_data_unchanged": true,
+    "topology_uv_node_ids_unchanged": true,
+    "unit_normals": true,
+    "limb_length_ratios": {
+      "4": 0.5499999922827018,
+      "5": 0.5500000038586507,
+      "27": 0.7000000202745313,
+      "28": 0.7000000277699144
+    },
+    "weapon_source_bytes_unchanged": true
+  },
+  "reopened_blend_validation": {
+    "passed": true,
+    "reopened_blend": "E:\\Projects\\MuMain\\tools\\art_pipeline\\workspace\\characters\\dwarf_weapon_attachment_fixed_20261009\\runs\\v01\\Dwarf_Classic_Experiment.blend",
+    "dwarf_body_parts": 5,
+    "bones": 60,
+    "actions": 284,
+    "textures_packed": true,
+    "weapon_shares_original_mesh": true,
+    "weapon_attachment_mode": "client_held_Link_false",
+    "attack_39_weapon_maximum_scale_error": 0.0000010728836059570312,
+    "attack_39_weapon_client_vertex_error": 0.00007737301298504917
+  },
+  "old_attachment_standing_probe": {
+    "maximum_vertex_error": 70.73033590766269,
+    "action": 4,
+    "key": 0,
+    "actor": "Dwarf_Classic_Group_Armature",
+    "evidence": "Prior turn manual Blender probe against the client_held_weapon_vertices evaluator, not a field in the old report.json.",
+    "blend_workspace_relative": "characters/dwarf_skill_validation_20261009/runs/v01/Dwarf_Classic_Experiment.blend"
+  },
+  "source_assets_sha256": {
+    "src\\bin\\Data\\Player\\player.bmd": "2964e7c41dcf686b79e53a74261192ebfc6879d36bc030c2e503ef0b8cef38ef",
+    "src\\bin\\Data\\Player\\HelmClass01.bmd": "349a17d1f28c9e99280fc911a5fd7189c265d251d8c0daed817139209d81e61e",
+    "src\\bin\\Data\\Player\\ArmorClass01.bmd": "b66ce9d64731130059045f41aaea453d5959601eaffec8b53820bc2aba23cc7a",
+    "src\\bin\\Data\\Player\\PantClass01.bmd": "4ec3f3f21ec2c9b0d8acd00bc44c310dde1647a2e31e71633606777e0762470e",
+    "src\\bin\\Data\\Player\\GloveClass01.bmd": "d57d083dc860e7de67b49b3a1fb57628f953f9aff8b094d4c4ea0fc848007119",
+    "src\\bin\\Data\\Player\\BootClass01.bmd": "92acd4f0f1e4dfe49d99a5f08c354d26c3b0c055c22508e389aa386e80cdab80",
+    "src\\bin\\Data\\Player\\skin_barbarian_01.OZJ": "e00985da32d82e4212145fb7f697ca64cd3fe7866fa5e2f0e6ea89fd1cc37c43",
+    "src\\bin\\Data\\Item\\Sword01.bmd": "4686fe94106500a5da881b3090aad82249ad191c1b3f19e892fa475ff673785e",
+    "src\\bin\\Data\\Item\\sword02.OZJ": "5996301b5e4590f8c6c81c78cfb0a2287e9551fc3ce6d98957dd1dd6a1e8b124"
+  },
+  "current_files_sha256": {
+    "src/source/Engine/Object/ZzzCharacter.cpp": "8bc12de55dfda83d5d67d032ba734d897c96684102fcbbd8a481bc90873ac077",
+    "src/source/Render/Models/ZzzBMD.cpp": "9ca3e122142103e3d5946210ce96e5b034642bd80b45dadd3e034ab8bac0b6ce",
+    "src/source/Core/Math/ZzzMathLib.cpp": "e9228c5610705efff133ff9178f07a65c84f327e4b2b2205cff78fe39feedca7",
+    ".agents/skills/mu-art-pipeline/scripts/dwarf_experiment/weapon_attachment.py": "f1a04152f69cb51838a9c07a59ae5518c2e22e89c4aad69c248e63ac10235199",
+    ".agents/skills/mu-art-pipeline/scripts/dwarf_experiment/build_experiment.py": "d11cf7e83393507b8c6efdb4c6b6dadc4790122d890721511a2988cff84e7e6a",
+    ".agents/skills/mu-art-pipeline/scripts/dwarf_experiment/inspect_saved_blend.py": "3071a2f50a44c5cd10d183a6ee24c954aa109f34c6f1e9973a838bb63ab7c1f1"
+  },
+  "artifact_files": {
+    "report.json": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/report.json",
+      "bytes": 7998,
+      "sha256": "b8959e79dc9bcd7cda63195d00a4c311ceb7d659901533670f6d7aa2531fcdcf"
+    },
+    "bundle_validation.json": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/bundle_validation.json",
+      "bytes": 379,
+      "sha256": "fc6db2265b4f00c516f4db6dc62cbfa47a4af4192e1f47e874949c7d59ea5c2d"
+    },
+    "blend_validation.json": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/blend_validation.json",
+      "bytes": 511,
+      "sha256": "51c77689780ef2d061fd2586d718cc529263207d33c8cb18efea7f1d947bd178"
+    },
+    "Dwarf_Classic_Experiment.blend": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/Dwarf_Classic_Experiment.blend",
+      "bytes": 12630693,
+      "sha256": "a5681786860603da0ea5380b099a8a2cb383f57bfe2ed453e696077067fe5b8b"
+    },
+    "pose_comparison.png": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/pose_comparison.png",
+      "bytes": 3208956,
+      "sha256": "6dab2c7a1ee254217b182ed3f3f5a58094f0fde940748e14a3f32305a82f6ffa"
+    },
+    "standing_comparison.png": {
+      "workspace_relative": "characters/dwarf_weapon_attachment_fixed_20261009/runs/v01/standing_comparison.png",
+      "bytes": 773583,
+      "sha256": "f89f99210c7b36e5233d3fd7536d0c19cfaf8d135841ee1c3bb22756d50d47e7"
+    }
+  },
+  "limitations": [
+    "Class01 body only; other class and armor mappings not processed",
+    "No in-client verification; game source/data were not modified",
+    "Contact correction only for actions 4, 17, 26",
+    "Two-hand grip, mounted contact, cloth and game movement speed are not adapted",
+    "Blender key playback is 24fps, not runtime PlaySpeed",
+    "Source single-node binding limits elbow/knee shape; preview needs visual review"
+  ],
+  "validation_history": [
+    "Generated corrected preview, BMD bundle and report; bundle validation passed.",
+    "First reopened-file check failed because it treated Blender bone collection order as source Node IDs.",
+    "Changed socket lookup to mu_bmd_node metadata; reran the reopened-file check successfully.",
+    "Original game resource hashes remained unchanged; no in-client validation was performed."
+  ]
+}

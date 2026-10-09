@@ -375,7 +375,7 @@ language:
 ### Translating items into a language the game already has
 
 The game's UI languages are `en`, `de`, `es`, `id`, `ja`, `pl`, `pt`, `ru`,
-`tl`, `uk` and `zh-TW`. Items currently have German (`de`), Portuguese (`pt`)
+`tl`, `uk`, `zh-CN` and `zh-TW`. Items currently have German (`de`), Portuguese (`pt`)
 and Spanish (`es`) names. To translate items into another of these languages,
 add names with that code (by hand or in the item editor); nothing else is
 needed. The names show as soon as a player picks that language.

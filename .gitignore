@@ -1,6 +1,7 @@
 
 .vs/
 .nuget/
+CMakeUserPresets.json
 
 graphify-out
 

@@ -3,13 +3,20 @@
 An in-client editor to **view and edit a map's terrain textures, terrain height,
 walkability attributes, and world objects, and to capture a top-down minimap
 screenshot** — saving back to the game's own on-disk formats. It lives inside the
-`MuEditor` module and is compiled only in editor builds (`ENABLE_EDITOR` /
-`_EDITOR`), so release builds are unaffected.
+`MuEditor` module and is compiled only when CMake's `ENABLE_EDITOR` option is on.
+That option adds the editor sources and dependencies and defines `_EDITOR` for
+the client. Editor presets support Debug and Release; player presets turn the
+option off.
 
 - **Build:** `MuMain\rebuild_x64_mueditor.cmd` (or `Build Client with MuEditor.cmd`).
-  Output: `out\build\windows-x64-mueditor\src\Release\Main.exe`.
-- **Run:** `Main.exe --editor`, or press **F12** in-game to toggle the editor.
-- **Open:** toolbar → **Map Editor**.
+  Output: `out\build\windows-x64-mueditor\src\<config>\Main.exe` (`Debug` or
+  `Release`).
+- **Run:** `Main.exe --editor` opens the editor toolbar at startup. Without that
+  argument, press **F12** or click the **Open Editor** button in the top-right.
+- **Open:** editor toolbar → **Map Editor**.
+- **Server behavior:** MuEditor is an overlay in the regular client. It does not
+  skip login or change the server connection; edit the map loaded after entering
+  the relevant world.
 
 ---
 

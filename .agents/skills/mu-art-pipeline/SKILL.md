@@ -1,11 +1,17 @@
 ---
 name: mu-art-pipeline
-description: Use when inspecting, creating, importing, exporting, or editing 3D models and textures for the MuMain MU Online client with this repository's Python and Blender MCP tools.
+description: Use when inspecting, creating, importing, exporting, or editing 3D models and textures for the MuMain MU Online client, or when a natural-language request edits existing item or skill game data.
 ---
 
 # MuMain game art workflow
 
-Use the repository's Python and MCP tools for repeatable asset work. Keep source assets under src/bin/Data read-only during preparation; stage inputs and write generated files under tools/art_pipeline/workspace. Workflow documentation and operator scripts are grouped under this Skill; the installable Python package is in scripts/mu_art_pipeline.
+Use the repository's Python and MCP tools for repeatable 3D asset work. Keep source models and textures under src/bin/Data read-only during art preparation; stage inputs and write generated files under tools/art_pipeline/workspace. Item and skill data edits follow the separate natural-language workflow below. Workflow documentation and operator scripts are grouped under this Skill; the installable Python package is in scripts/mu_art_pipeline.
+
+## Natural-language item and skill editing
+
+Use this skill when the user asks in Chinese or English to change an existing MU item or skill by name, ID, or gameplay property. Follow the editing contract in [Item and Skill natural-language editing](references/item-skill-editing.md).
+
+The first supported content scope is existing item definitions and skill records. Map editing is deferred for a later design discussion; Dev Editor runtime tuning and the read-only Effect Browser are out of scope. The standalone Python editors belong in the repository code tree, not under this skill. This phase defines how natural-language requests are understood; it does not add those Python tools.
 
 ## Character recovery default
 
@@ -14,6 +20,14 @@ The user approved the client-style Dark Wizard group and requested this structur
 For the initial Dark Wizard, run `scripts/create_dark_wizard_group.py` with the repository-root `.venv` and a new workspace output directory. It creates five independent Class01 meshes on one 60-bone Player armature with all 284 source actions; initially only action 1/key 0 is active. Read [Character recovery and textures](references/character-model-assembly-and-textures.md) for the complete creation steps, reusable modules, controls, and deferred lighting issue. Other characters require their actual client body-slot mapping.
 
 Use [historical static tools](references/dark-wizard-static-history.md) only when the user explicitly requests a static snapshot or merged output. The legacy OBJ rebuild command requires `--static-snapshot`.
+
+## Character proportion experiments
+
+For an explicit request to change body proportions while reusing Player actions, read [Character proportions and animation reuse](references/character-proportions-and-animation-reuse.md). Run `scripts/create_dwarf_experiment.py` with the root Python environment and a new workspace directory. It stages original Class01 assets, adapts skeleton translations and mesh shape, preserves rotation keys, attaches a rigid original sword, and writes previews and validation reports. The default profile is a classic dwarf; this experimental mode does not change the character recovery default or install game data. Other classes, armor, two-hand grips, mounted poses, and runtime movement require further adaptation.
+
+## Weapon attachment
+
+For held or back-mounted weapon positioning, read [Weapon attachment archive](references/weapon-attachment.md). It records the client call paths, source Node IDs, matrix order, Blender setup, and the Sword01 correction evidence. Normal Player hand-held items use Link=false; the Link=true rotation/offset belongs to a different path. Preserve the item’s own bone pose and resolve Blender bones by source-node metadata.
 
 ## Player action lookup
 
@@ -35,7 +49,7 @@ Refresh after source changes with the root `.venv`: `scripts/extract_player_acti
 
 - Run .agents/skills/mu-art-pipeline/scripts/run.ps1 mu-art model inspect <workspace-bmd-path> to validate a generated BMD and summarize meshes, textures, bones, and actions. This proves file structure only; it does not prove in-game appearance or compatibility.
 - Reopen generated textures and inspect the model in Blender. For a game compatibility claim, test with the target client build and resource location.
-- Keep generated BMD and texture files in the workspace until they have been reviewed. Do not overwrite or copy over src/bin/Data originals as part of preparation; when the user requests installation into game data, identify the exact destination and preserve a backup.
+- Keep generated BMD and texture files in the workspace until they have been reviewed. The source-read-only rule applies to 3D art preparation; explicit item/skill data edits follow the separate workflow above. When the user requests installation of a prepared art asset into game data, identify the exact destination and preserve a backup.
 
 ## Blender connection
 
