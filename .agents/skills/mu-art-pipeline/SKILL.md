@@ -25,6 +25,12 @@ Use [historical static tools](references/dark-wizard-static-history.md) only whe
 
 For an explicit request to change body proportions while reusing Player actions, read [Character proportions and animation reuse](references/character-proportions-and-animation-reuse.md). Run `scripts/create_dwarf_experiment.py` with the root Python environment and a new workspace directory. It stages original Class01 assets, adapts skeleton translations and mesh shape, preserves rotation keys, attaches a rigid original sword, and writes previews and validation reports. The default profile is a classic dwarf; this experimental mode does not change the character recovery default or install game data. Other classes, armor, two-hand grips, mounted poses, and runtime movement require further adaptation.
 
+## Chibi restyling and anatomy revisions
+
+For chibi conversion, shoulder/arm/hand remodeling, knee/ankle gaps, or recurring seam and texture issues after proportion changes, first read [Character restyling production lessons and source map](references/character-restyling.md). It contains the repair sequence, failed approaches, Class01 parameters, original screenshot-to-concept workflow, and stage-specific reuse guidance. The seven final repair scripts are archived directly in scripts/chibi_experiment; historical snapshots, comparison images, reports, and source fingerprints are under references/chibi-experiments.
+
+Copy and adapt archived code into a new workspace before execution: the frozen scripts still contain historical paths and scene assumptions. Resolve the target model's axes, scale, reference pose, source nodes, slots, and UV layout. Do not reapply shoulder proportion changes to an already adjusted rig. Check joint cross-sections and side/low-angle silhouettes as well as topology: a connected surface can still have thin bridges and visible knee/ankle gaps. Preserve the original comparison and rigid weapon when requested. These are Blender art experiments with recorded pose samples, not validated game exports or all-action visual acceptance.
+
 ## Weapon attachment
 
 For held or back-mounted weapon positioning, read [Weapon attachment archive](references/weapon-attachment.md). It records the client call paths, source Node IDs, matrix order, Blender setup, and the Sword01 correction evidence. Normal Player hand-held items use Link=false; the Link=true rotation/offset belongs to a different path. Preserve the item’s own bone pose and resolve Blender bones by source-node metadata.

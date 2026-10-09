@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-09",
+  "scope": "Knee and ankle envelope correction; isolated Blender art experiment",
+  "report": {
+    "source_blend": "E:\\Projects\\MuMain\\tools\\art_pipeline\\workspace\\characters\\chibi_anatomy_20261009\\Chibi_Anatomy_Experiment.blend",
+    "source_blend_sha256": "2780f7f3f095c1019834242c726440a9411a1e2d7d610bd9282e3a191017b5d7",
+    "source_blend_unchanged": true,
+    "actions": 284,
+    "bones": 60,
+    "body_parts": 5,
+    "geometry": {
+      "source_surfaces_fused": true,
+      "internal_overlaps_removed": true,
+      "voxel_size": 0.42,
+      "shared_seam_weights_and_normals": true,
+      "revision": "Continuous knee rings and extended ankle-to-instep envelope; rest rig unchanged"
+    },
+    "textures_packed": true,
+    "original_visible": true,
+    "weapon_node": 33,
+    "installed_to_game": false,
+    "visual_poses": [
+      {
+        "action": 4,
+        "key": 0
+      },
+      {
+        "action": 17,
+        "key": 3
+      },
+      {
+        "action": 39,
+        "key": 4
+      }
+    ],
+    "limit": "Blender art prototype; all-action visual review and game export not performed"
+  },
+  "saved_inspection": {
+    "body_surface_components": [
+      98790
+    ],
+    "duplicate_faces": 0,
+    "combined_open_boundary_edges": 0,
+    "combined_nonmanifold_edges": 0,
+    "shared_boundary_vertices": 942,
+    "shared_vertex_position_error": 0,
+    "shared_vertex_weight_error": 0,
+    "body_parts": 5,
+    "actions": 284,
+    "weapon_node": 33,
+    "original_visible": true,
+    "textures": [
+      {
+        "name": "chibi_skin.png",
+        "packed": true
+      },
+      {
+        "name": "skin_barbarian_01.jpg",
+        "packed": true
+      },
+      {
+        "name": "sword02.jpg",
+        "packed": true
+      }
+    ],
+    "evaluated_pose_seams": [
+      {
+        "action": 4,
+        "key": 0,
+        "max_world_seam_error": 0
+      },
+      {
+        "action": 17,
+        "key": 3,
+        "max_world_seam_error": 0
+      },
+      {
+        "action": 26,
+        "key": 3,
+        "max_world_seam_error": 0
+      },
+      {
+        "action": 39,
+        "key": 4,
+        "max_world_seam_error": 0
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/continuous_legs.py",
+      "bytes": 3370,
+      "sha256": "edb5632471274993c4a84840932ed0f0490bf3c982ff2095e52acfa91e608603"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/connected_body.py",
+      "bytes": 12052,
+      "sha256": "bdb1b8b6f6bf7c3fc883cccbc8b7be7731a360c1b08a133ba1dc98e4292f4b1b"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/build_connected.py",
+      "bytes": 6073,
+      "sha256": "323f4d608b9d1988cfcb51d634dbb60414deefb55777b6e806b6e2b4cc3eeaaa"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/joint_views.py",
+      "bytes": 1541,
+      "sha256": "191c6c487f6126f4a830908c8682c4062ff8c85c0b08eb2ca39faaf147146858"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/inspect_saved.py",
+      "bytes": 4714,
+      "sha256": "fa8af2e241cc6a2fdd10bf42ff51208bc9770047adad19c48b4fb5f943cca8b1"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/Chibi_Joint_Blend_Experiment.blend",
+      "bytes": 33414898,
+      "sha256": "01eefee6b16bc118975f5309533870de5c94ca4fbc24d826cb2a43fc5232deb7"
+    }
+  ],
+  "archive_note": "Frozen scripts require original experiment Blend and project skill dependencies; no game data installed"
+}

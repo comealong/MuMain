@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-09",
+  "scope": "Dark Wizard Class01 Blender chibi experiment; visual acceptance still subject to user review",
+  "files": [
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/scripts/arm_anatomy.py",
+      "bytes": 4973,
+      "sha256": "79fa0243965f6ac63fc02494a0edc849e44899869017a36ea837c3b8b1497aff"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/scripts/connected_body.py",
+      "bytes": 13085,
+      "sha256": "2832ea8413d48ded52564f632c25745fc9620b07b6bb434e1fa3b0b4fc156b8d"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/scripts/surface.py",
+      "bytes": 5766,
+      "sha256": "bcb2e21b0ead545da9818b305e821a2d39959437104839705d40b37ad4119788"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/scripts/build_connected.py",
+      "bytes": 6274,
+      "sha256": "a4ebff4fee2fd36b563a83cc0979828190f08afa9d11aaac7f82436dabdf792e"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/scripts/inspect_saved.py",
+      "bytes": 3010,
+      "sha256": "d98250d7f41396c914f5bb6bef7b00f66281d89f09ae60ec444d7c381f26c01e"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/report.json",
+      "bytes": 1174,
+      "sha256": "41f668124094c8c2146dd832eb50a68428045a250558f373e1e61e7b846f2f89"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/saved_surface_inspection.json",
+      "bytes": 592,
+      "sha256": "6257dbee1766d59efe6cd887ee3b7b4e94494d1ba82695da28e50f79dee23f0b"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/README.md",
+      "bytes": 2196,
+      "sha256": "20f3fea3e9bf6a34abec8d8d2fd660cc760be275453beed433c6bf039a16aa09"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/Chibi_Anatomy_Experiment.blend",
+      "bytes": 33468139,
+      "sha256": "2780f7f3f095c1019834242c726440a9411a1e2d7d610bd9282e3a191017b5d7"
+    },
+    {
+      "path": "tools/art_pipeline/workspace/characters/chibi_anatomy_20261009/textures/chibi_skin.png",
+      "bytes": 2152863,
+      "sha256": "3c980639ac6adb856f359c2e9d1e205b025b421459e9084653c90eb7030933a8"
+    }
+  ],
+  "report": {
+    "source_blend": "E:\\Projects\\MuMain\\tools\\art_pipeline\\workspace\\characters\\chibi_connected_20261009\\Chibi_Connected_Experiment.blend",
+    "source_blend_sha256": "09b8c8c5007847fa91646a22cd21f5ff400ff3f989f5443de3b44902a8c944e1",
+    "source_blend_unchanged": true,
+    "actions": 284,
+    "bones": 60,
+    "body_parts": 5,
+    "geometry": {
+      "source_surfaces_fused": true,
+      "internal_overlaps_removed": true,
+      "voxel_size": 0.42,
+      "shared_seam_weights_and_normals": true,
+      "arm_proportions": {
+        "shoulder_inset": 3.5,
+        "shoulder_drop": 2,
+        "upper_length_factor": 1.15,
+        "fore_length_factor": 1.25,
+        "rotation_channels_unchanged": true,
+        "retarget": "local rest offsets; existing pose delta channels retained"
+      }
+    },
+    "textures_packed": true,
+    "original_visible": true,
+    "weapon_node": 33,
+    "installed_to_game": false,
+    "visual_poses": [
+      {
+        "action": 4,
+        "key": 0
+      },
+      {
+        "action": 17,
+        "key": 3
+      },
+      {
+        "action": 39,
+        "key": 4
+      }
+    ],
+    "limit": "Blender art prototype; all-action visual review and game export not performed"
+  },
+  "saved_inspection": {
+    "body_surface_components": [
+      100918
+    ],
+    "duplicate_faces": 0,
+    "combined_open_boundary_edges": 0,
+    "combined_nonmanifold_edges": 0,
+    "shared_boundary_vertices": 938,
+    "shared_vertex_position_error": 0,
+    "shared_vertex_weight_error": 0,
+    "body_parts": 5,
+    "actions": 284,
+    "weapon_node": 33,
+    "original_visible": true,
+    "textures": [
+      {
+        "name": "chibi_skin.png",
+        "packed": true
+      },
+      {
+        "name": "skin_barbarian_01.jpg",
+        "packed": true
+      },
+      {
+        "name": "sword02.jpg",
+        "packed": true
+      }
+    ]
+  },
+  "profile": {
+    "name": "chibi_reference_arm_revision",
+    "leg_length": 0.62,
+    "arm_length": 0.58,
+    "torso_length": 0.76,
+    "body_width": 0.7,
+    "body_depth": 1.05,
+    "limb_thickness": 1.06,
+    "neck_length": 0.65,
+    "head_size": 2.1,
+    "hand_size": 0.62,
+    "foot_size": 1.12,
+    "stride_scale": 0.62,
+    "skin_blend_radius": 4,
+    "weapon_scale": 0.64
+  },
+  "recipe_archive": "recipe-source.zip",
+  "archive_warning": "Frozen historical scripts with absolute paths, existing Blend and skill dependencies; not a general model converter. No game data included.",
+  "archive_files": [
+    {
+      "name": "recipe-source.zip",
+      "bytes": 17179,
+      "sha256": "6c97a556fce522a7c21a484f6bede46a291d73b34ca1c555eb50d469fe4b3d0c"
+    },
+    {
+      "name": "before.png",
+      "bytes": 1278653,
+      "sha256": "78a8ecd7bbb251fcfe139b2b53f1ae1298eb8c82b026de0124b24a327bfb7e63"
+    },
+    {
+      "name": "after.png",
+      "bytes": 1274192,
+      "sha256": "1f2053829c2c43e7f08e9527e1fe5a708d1b2adca03f9ce6ae33203a3f8e89dd"
+    }
+  ]
+}

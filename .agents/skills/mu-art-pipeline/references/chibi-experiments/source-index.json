@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-09",
+  "purpose": "Exact source archive for repeated Class01 art repairs; adapt copies in a new workspace",
+  "code_state": "Unmodified final knee/ankle repair source; historical fixed paths remain",
+  "scripts": [
+    {
+      "skill_path": "scripts/chibi_experiment/arm_anatomy.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/arm_anatomy.py",
+      "bytes": 4973,
+      "sha256": "79fa0243965f6ac63fc02494a0edc849e44899869017a36ea837c3b8b1497aff"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/connected_body.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/connected_body.py",
+      "bytes": 12052,
+      "sha256": "bdb1b8b6f6bf7c3fc883cccbc8b7be7731a360c1b08a133ba1dc98e4292f4b1b"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/continuous_legs.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/continuous_legs.py",
+      "bytes": 3370,
+      "sha256": "edb5632471274993c4a84840932ed0f0490bf3c982ff2095e52acfa91e608603"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/surface.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/surface.py",
+      "bytes": 5766,
+      "sha256": "bcb2e21b0ead545da9818b305e821a2d39959437104839705d40b37ad4119788"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/build_connected.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/build_connected.py",
+      "bytes": 6073,
+      "sha256": "323f4d608b9d1988cfcb51d634dbb60414deefb55777b6e806b6e2b4cc3eeaaa"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/joint_views.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/joint_views.py",
+      "bytes": 1541,
+      "sha256": "191c6c487f6126f4a830908c8682c4062ff8c85c0b08eb2ca39faaf147146858"
+    },
+    {
+      "skill_path": "scripts/chibi_experiment/inspect_saved.py",
+      "source_path": "tools/art_pipeline/workspace/characters/chibi_joint_blend_20261009/scripts/inspect_saved.py",
+      "bytes": 4714,
+      "sha256": "fa8af2e241cc6a2fdd10bf42ff51208bc9770047adad19c48b4fb5f943cca8b1"
+    }
+  ]
+}
