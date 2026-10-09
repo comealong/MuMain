@@ -21,6 +21,8 @@ CNewUIQuestProgress::CNewUIQuestProgress()
 {
     m_pNewUIMng = NULL;
     m_Pos.x = m_Pos.y = 0;
+    m_nSelNPCPage = 0;
+    m_nMaxNPCPage = 0;
 }
 
 CNewUIQuestProgress::~CNewUIQuestProgress()
@@ -390,6 +392,9 @@ void CNewUIQuestProgress::SetContents(DWORD dwQuestIndex)
 
 void CNewUIQuestProgress::SetCurNPCWords()
 {
+    m_nSelNPCPage = 0;
+    m_nMaxNPCPage = 0;
+
     if (0 == m_dwCurQuestIndex)
         return;
 
@@ -403,7 +408,6 @@ void CNewUIQuestProgress::SetCurNPCWords()
         return;
 
     m_nMaxNPCPage = (nLine - 1) / QP_NPC_MAX_LINE_PER_PAGE;
-    m_nSelNPCPage = 0;
 }
 
 void CNewUIQuestProgress::SetCurPlayerWords()

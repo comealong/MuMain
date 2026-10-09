@@ -21,6 +21,9 @@ CNewUINPCDialogue::CNewUINPCDialogue()
     m_pNewUIMng = NULL;
     m_Pos.x = m_Pos.y = 0;
     m_dwContributePoint = 0;
+    m_nSelNPCPage = 0;
+    m_nMaxNPCPage = 0;
+    m_eLowerView = SEL_TEXTS_MODE;
 }
 
 CNewUINPCDialogue::~CNewUINPCDialogue()
@@ -399,7 +402,12 @@ void CNewUINPCDialogue::SetContents(DWORD dwDlgIndex)
 
 void CNewUINPCDialogue::SetCurNPCWords(int nQuestListCount)
 {
-    memset(m_aszNPCWords[0], 0, sizeof(wchar_t) * ND_NPC_LINE_MAX * ND_WORDS_ROW_MAX);
+    m_nSelNPCPage = 0;
+    m_nMaxNPCPage = 0;
+    m_eLowerView = SEL_TEXTS_MODE;
+    m_btnProgressR.Lock();
+
+    memset(m_aszNPCWords, 0, sizeof m_aszNPCWords);
 
     g_pRenderText->SetFont(g_hFont);
     const wchar_t* pszSrc;
@@ -426,7 +434,6 @@ void CNewUINPCDialogue::SetCurNPCWords(int nQuestListCount)
         m_btnProgressR.Lock();
     }
 
-    m_nSelNPCPage = 0;
 }
 
 void CNewUINPCDialogue::SetCurSelTexts()
