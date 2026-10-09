@@ -738,6 +738,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Editor.cpp" />
     <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Game.cpp" />
     <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\Metadata.cpp" />
+    <ClCompile Include="E:\Projects\MuMain\out\build\windows-x64-vs2022\Generated\I18N\QuestWords.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -21,6 +21,8 @@ What was added on top of that:
 - **Volume and render-level sliders round to the nearest level** instead of
   truncating, so the slider endpoints actually reach 0 (mute) and the
   configured maximum.
+- **The font picker includes Noto Sans TC and Noto Sans SC.** Choose Noto Sans SC
+  for simplified Chinese glyph forms and Noto Sans TC for traditional Chinese.
 - **Resolution combo-box clicks no longer leak through** to the checkboxes
   behind the dropdown.
 - **Resolution changes go through SDL** (PR
@@ -54,6 +56,7 @@ window writes to these sections:
   `SavePassword`, `EncryptedUsername`, `EncryptedPassword`); see
   "Remembering login credentials" below.
 - `[ConnectionSettings]`
+- `[UI]` - selected interface locale and font family.
 - `[Camera]` - orbital wheel-zoom radius (`Zoom`). **New in this PR**, the
   only key the camera rework added.
 

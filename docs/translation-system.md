@@ -19,6 +19,7 @@ src/Localization/
   Editor.en.resx     Editor.de.resx     ...
   Game.en.resx       Game.de.resx       ...
   Dialog.en.resx     Dialog.de.resx     ...
+  QuestWords.en.resx QuestWords.zh-CN.resx
 ```
 
 Filename convention: `<Group>.<locale>.resx`.
@@ -71,6 +72,7 @@ ${CMAKE_BINARY_DIR}/Generated/I18N/
   Game.h   Game.cpp
   Dialog.h Dialog.cpp
   Metadata.h
+  QuestWords.h QuestWords.cpp
 ```
 
 The custom command is wired up in `src/CMakeLists.txt` under the comment
@@ -85,7 +87,7 @@ The generator takes two flags:
 - `--input <dir>` - the `.resx` source directory (always `src/Localization`).
 - `--output <dir>` - where to write `Generated/I18N/`.
 - `--wide-groups <Group,...>` - groups whose strings are `wchar_t*` instead of
-  `char*`. Today: `Game,Dialog`. Add a new group here if it needs wide chars
+  `char*`. Today: `Game,Dialog,QuestWords`. Add a new group here if it needs wide chars
   (most do; the `Editor` group is the only narrow one).
 
 ## Generated C++ API
@@ -414,6 +416,10 @@ data files, two commits are the headlines:
 - `19ad1888` - removed the per-language `Dialog_*.bmd` files after the Dialog
   group migration.
 
-The leftover binary `text.bmd` / `NPCDialogue.bmd` / per-language
-`Dialog_*.bmd` files are pure data; nothing in the C++ source loads them
-anymore.
+The legacy `NPCDialogue.bmd` still supplies NPC dialogue state and answer
+flow. Quest list entries and NPC text are selected by numeric IDs and normally
+read from `QuestWords_<language>.bmd`. For the `zh-CN` UI locale,
+`CQuestMng::GetWords` checks the `QuestWords` ResX translations first, then
+falls back to the selected language's BMD when an ID has no override. Other UI
+locales continue to use their selected language's BMD. The `text.bmd` and
+per-language `Dialog_*.bmd` files are no longer loaded by the C++ source.

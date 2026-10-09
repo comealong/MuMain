@@ -6,6 +6,8 @@
 #include "QuestMng.h"
 #include "I18N/All.h"
 
+#include <cstring>
+
 
 
 #include "Core/Platform/CrtDbg.h"
@@ -304,6 +306,15 @@ void CQuestMng::SetCurQuestProgress(DWORD dwQuestIndex)
 
 const wchar_t* CQuestMng::GetWords(int nWordsIndex)
 {
+    // QuestWords ResX overrides currently cover the zh-CN locale.
+    const char* locale = I18N::GetCurrentLocale();
+    if (locale != nullptr && std::strcmp(locale, "zh-CN") == 0)
+    {
+        const wchar_t* localizedWords = I18N::QuestWords::Lookup(nWordsIndex);
+        if (localizedWords != nullptr && localizedWords[0] != L'\0')
+            return localizedWords;
+    }
+
     QuestWordsMap::const_iterator iter = m_mapQuestWords.find(nWordsIndex);
     if (iter == m_mapQuestWords.end())
         return NULL;
