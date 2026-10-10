@@ -1,0 +1,113 @@
+{
+    "purpose":  "Version-control relocated historical files outside the generic skill",
+    "files":  [
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-20261009/after.png",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-20261009/after.png",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-20261009/after.png",
+                      "sha256":  "1f2053829c2c43e7f08e9527e1fe5a708d1b2adca03f9ce6ae33203a3f8e89dd"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-20261009/before.png",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-20261009/before.png",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-20261009/before.png",
+                      "sha256":  "78a8ecd7bbb251fcfe139b2b53f1ae1298eb8c82b026de0124b24a327bfb7e63"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-20261009/evidence.json",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-20261009/evidence.json",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-20261009/evidence.json",
+                      "sha256":  "ffad0fd5a6fcec88c4e19f96f15d78766254fb3d46a0a8de66df90887a422101"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-20261009/recipe-source.zip",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-20261009/recipe-source.zip",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-20261009/recipe-source.zip",
+                      "sha256":  "6c97a556fce522a7c21a484f6bede46a291d73b34ca1c555eb50d469fe4b3d0c"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-joints-20261009/after.png",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-joints-20261009/after.png",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-joints-20261009/after.png",
+                      "sha256":  "2a3f92c317e09904b38fdf1b6a9657922cdeb1201cb3051a56a1d24c29551f63"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-joints-20261009/before.png",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-joints-20261009/before.png",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-joints-20261009/before.png",
+                      "sha256":  "c555a8467bf6ba7efe15f99a51d2e694e23e0cbfc2d8ed9bf8d078fd0d76249a"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-joints-20261009/evidence.json",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-joints-20261009/evidence.json",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-joints-20261009/evidence.json",
+                      "sha256":  "c274fa9ed3edf213b5804f1b25aaa3db0d278c18bba5251e45ed6df833102ba0"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/chibi-joints-20261009/recipe-source.zip",
+                      "versioned_archive_path":  "docs/art-experiments/chibi-joints-20261009/recipe-source.zip",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/chibi-joints-20261009/recipe-source.zip",
+                      "sha256":  "263c2caba03ec3b335eaf3c13e35bdfd835bc94a20f03dfe8070ac9c027547df"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/chibi-experiments/source-index.json",
+                      "versioned_archive_path":  "docs/art-experiments/source-index.json",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/chibi-experiments/source-index.json",
+                      "sha256":  "bc2df8269f1d27e12b22b09d34c919ba265a4cc9666b5150b6e383fc0a9d81fb"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/dark-wizard-static-history.md",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/references/dark-wizard-static-history.md",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/dark-wizard-static-history.md",
+                      "sha256":  "1d3a1373fbebc1354ae9b8dc741652abb1ce55e4d9a0cfff43e59040909e401a"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/references/weapon-attachment-verification-20261009.json",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/references/weapon-attachment-verification-20261009.json",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/references/weapon-attachment-verification-20261009.json",
+                      "sha256":  "327f892982860ab41c1c5b3eaee24ce54dc1b6edcb3761afb105b5f794521237"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/arm_anatomy.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/arm_anatomy.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/arm_anatomy.py",
+                      "sha256":  "79fa0243965f6ac63fc02494a0edc849e44899869017a36ea837c3b8b1497aff"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/build_connected.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/build_connected.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/build_connected.py",
+                      "sha256":  "323f4d608b9d1988cfcb51d634dbb60414deefb55777b6e806b6e2b4cc3eeaaa"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/connected_body.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/connected_body.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/connected_body.py",
+                      "sha256":  "bdb1b8b6f6bf7c3fc883cccbc8b7be7731a360c1b08a133ba1dc98e4292f4b1b"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/continuous_legs.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/continuous_legs.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/continuous_legs.py",
+                      "sha256":  "edb5632471274993c4a84840932ed0f0490bf3c982ff2095e52acfa91e608603"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/inspect_saved.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/inspect_saved.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/inspect_saved.py",
+                      "sha256":  "fa8af2e241cc6a2fdd10bf42ff51208bc9770047adad19c48b4fb5f943cca8b1"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/joint_views.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/joint_views.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/joint_views.py",
+                      "sha256":  "191c6c487f6126f4a830908c8682c4062ff8c85c0b08eb2ca39faaf147146858"
+                  },
+                  {
+                      "original_skill_path":  ".agents/skills/mu-art-pipeline/scripts/chibi_experiment/surface.py",
+                      "versioned_archive_path":  "docs/art-experiments/skill-history-20261010/scripts/chibi_experiment/surface.py",
+                      "workspace_archive_path":  "tools/art_pipeline/workspace/knowledge/skill_generalization_20261010/history/scripts/chibi_experiment/surface.py",
+                      "sha256":  "bcb2e21b0ead545da9818b305e821a2d39959437104839705d40b37ad4119788"
+                  }
+              ]
+}

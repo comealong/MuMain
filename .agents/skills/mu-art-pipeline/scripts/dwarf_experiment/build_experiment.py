@@ -3,7 +3,6 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
-import re
 import shutil
 import sys
 
@@ -17,6 +16,7 @@ from paths import ROOT, experiment_from_arguments
 
 EXPERIMENT = experiment_from_arguments()
 from mu_art_pipeline.bmd import parse_bmd
+from mu_art_pipeline.player_actions import extract_player_actions
 from mu_art_pipeline.poses import validate_part_bones
 from mu_art_pipeline.character_sources import PARTS
 from mu_art_pipeline.blender_player_rig import (
@@ -216,10 +216,13 @@ def check_pose(player, parts, rig, objects, weapon, weapon_model, scale, action,
 
 
 def rename_actions(actions):
-    lookup = ROOT / '.agents/skills/mu-art-pipeline/references/player-action-index.md'
-    names = dict((int(i), name) for i, name in re.findall(r'\| (\d+) \| .(PLAYER_[A-Z0-9_]+)', lookup.read_text(encoding='utf-8')))
-    for index, action in enumerate(actions):
-        action.name = f'Dwarf_{index:03}_{names.get(index, "ACTION")}'
+    catalog = extract_player_actions(
+        ROOT / 'src/source/Core/Globals/_enum.h',
+        EXPERIMENT / 'sources/player.bmd')
+    names = {record['index']: record['name'] for record in catalog['actions']}
+    for action in actions:
+        index = action['mu_bmd_action_index']
+        action.name = f'Dwarf_{index:03}_{names[index]}'
 
 
 def prepare_models(profile):

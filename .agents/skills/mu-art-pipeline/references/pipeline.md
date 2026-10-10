@@ -66,18 +66,14 @@ See blender-mcp-setup.md for the Blender integration and connection details.
 
 ## Character recovery and texture alignment
 
-The default character recovery workflow keeps each body part as an independent mesh on one shared Player armature, with all source actions, UVs, textures, and node assignments. The user approved the Dark Wizard client-style group and requested this structure for future recovery.
+Preserve separate body meshes on one shared source armature with source actions, UVs, textures, and node assignments. Determine the actual client body-slot and resource mapping before assembling a character; convenience scripts may contain preset asset selections.
 
-From the repository root, use a new workspace output directory:
+Read [Reference spaces, assembly, and textures](character-model-assembly-and-textures.md) for coordinate conversion, source metadata, UV handling, and reusable pose/rig/mesh modules. Recovery starts from original resources; an authorized local remodel can continue from its saved baseline. Explicit topology changes follow [restyling and deformation repair](character-restyling.md).
 
-    .venv/Scripts/python.exe .agents/skills/mu-art-pipeline/scripts/create_dark_wizard_group.py --output characters/dark_wizard_shared_02
+## Proportions, attachments, and actions
 
-Read [Character recovery and textures](character-model-assembly-and-textures.md) for the full process, action switching, source mappings, and deferred lighting issue. The default group workflow directly uses the shared source, rig, mesh, and preview modules; it does not depend on a static OBJ or the old Corrected mesh.
+- [Proportion and animation reuse](character-proportions-and-animation-reuse.md): adapt the skeleton and reference mesh, then inspect movement and contacts.
+- [Rigid attachment composition](weapon-attachment.md): trace the actual client branch and combine socket, item pose, and instance transforms.
+- [Action lookup and time conventions](player-action-index.md): derive IDs and names from current source/asset data rather than a historical table.
 
-The current entrypoint covers initial Dark Wizard Class01 parts. For other characters, determine their actual client body-slot mapping before reusing the shared armature workflow. Do not merge character parts as a default recovery step.
-
-[Historical static snapshots](dark-wizard-static-history.md) and [Corrected UV repair](../scripts/repair_dark_wizard_uv.py) remain available for explicitly requested historical/static work. The legacy OBJ rebuild requires `--static-snapshot`. Generated models, source snapshots, backups, and renders remain in tools/art_pipeline/workspace.
-
-## Player animation names
-
-Use [the full Player action index](player-action-index.md) to look up all 284 BMD action IDs, source enum names, readable meanings, and key counts. Refresh the reference with `.venv/Scripts/python.exe .agents/skills/mu-art-pipeline/scripts/extract_player_actions.py --update-skill`.
+Generate resource-specific action catalogs with .venv/Scripts/python.exe .agents/skills/mu-art-pipeline/scripts/extract_player_actions.py. Catalogs and experiment records remain in the workspace; the skill keeps reusable methods.

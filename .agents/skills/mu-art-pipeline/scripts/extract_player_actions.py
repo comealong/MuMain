@@ -5,6 +5,7 @@ import argparse
 import json
 from pathlib import Path
 import re
+import sys
 
 from mu_art_pipeline.character_sources import ROOT, WORKSPACE
 from mu_art_pipeline.player_actions import extract_player_actions
@@ -75,7 +76,7 @@ def render_markdown(catalog: dict) -> str:
              '## 重新提取', '', '```powershell',
              '& .venv/Scripts/python.exe .agents/skills/mu-art-pipeline/scripts/extract_player_actions.py',
              '```', '',
-             'JSON/Markdown 输出到 `tools/art_pipeline/workspace/catalogs/`。加 `--update-skill` 会同步更新本 Skill 的 `references/player-action-index.md`。生成器根据 BMD 动作数量选择匹配的枚举配置，保留别名和源码行号。', '',
+             'JSON/Markdown 仅输出到 `tools/art_pipeline/workspace/catalogs/`，不覆盖 Skill 的通用指导。生成器根据源资源选择匹配的枚举配置，保留别名和源码行号。', '',
              '## 完整对照', '', '| 编号 | 源码枚举名称 | 可读含义（直译） | 关键帧数 |',
              '| ---: | --- | --- | ---: |']
     quick = quick_reference(catalog)
@@ -115,13 +116,20 @@ def quick_reference(catalog: dict) -> list[str]:
     return lines
 
 
+def write_catalog(catalog: dict, output: Path) -> None:
+    output.mkdir(parents=True, exist_ok=True)
+    (output / 'player-actions.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2), encoding='utf-8')
+    markdown = render_markdown(catalog)
+    (output / 'player-actions.md').write_text(markdown, encoding='utf-8')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--header', type=Path, default=ROOT / 'src/source/Core/Globals/_enum.h')
     parser.add_argument('--model', type=Path, default=ROOT / 'src/bin/Data/Player/player.bmd')
     parser.add_argument('--output', type=Path, default=Path('catalogs'))
     parser.add_argument('--update-skill', action='store_true',
-                        help='Also refresh the complete action reference inside this Skill')
+                        help='Deprecated compatibility flag; catalogs are written only to the workspace')
     args = parser.parse_args()
     output = (WORKSPACE / args.output).resolve()
     if not output.is_relative_to(WORKSPACE.resolve()):
@@ -129,13 +137,9 @@ def main():
     catalog = extract_player_actions(args.header, args.model)
     for action in catalog['actions']:
         action['gloss_zh'] = action_gloss(action['name'])
-    output.mkdir(parents=True, exist_ok=True)
-    (output / 'player-actions.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2), encoding='utf-8')
-    markdown = render_markdown(catalog)
-    (output / 'player-actions.md').write_text(markdown, encoding='utf-8')
+    write_catalog(catalog, output)
     if args.update_skill:
-        reference = Path(__file__).resolve().parent.parent / 'references/player-action-index.md'
-        reference.write_text(markdown, encoding='utf-8')
+        print('--update-skill is deprecated; resource catalogs remain in the workspace.', file=sys.stderr)
     print(json.dumps({'action_count': catalog['action_count'], 'defines': catalog['defines'],
                       'catalog_json': str(output / 'player-actions.json'),
                       'catalog_markdown': str(output / 'player-actions.md')}))

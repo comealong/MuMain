@@ -45,5 +45,13 @@
       "bytes": 4714,
       "sha256": "fa8af2e241cc6a2fdd10bf42ff51208bc9770047adad19c48b4fb5f943cca8b1"
     }
+  ],
+  "follow_up_repairs": [
+    {
+      "date": "2026-10-10",
+      "kind": "shoulder motion weight repair",
+      "source_index": "chibi-shoulder-motion-20261010/source-index.json",
+      "evidence": "chibi-shoulder-motion-20261010/evidence.json"
+    }
   ]
 }
