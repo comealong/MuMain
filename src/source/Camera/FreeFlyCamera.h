@@ -36,6 +36,8 @@ public:
     // down, framing the whole 256x256 terrain, with far/cull/fog pushed out - for
     // capturing a top-down minimap screenshot.
     void SnapTopDown();
+    void SnapToWalkPosition(const vec3_t position);
+    void TeleportToWalkPosition(float x, float y);
     // Leaves top-down pan/zoom mode (arrows go back to fly-along-forward).
     void ClearTopDown() { m_bTopDownPan = false; }
     // Zooms the top-down view by mouse-wheel ticks (positive = zoom in). Driven by
@@ -100,11 +102,18 @@ private:
     // Top-down minimap mode: arrows pan across the map (XY) instead of flying along
     // the near-straight-down forward vector, and the mouse wheel zooms (height).
     bool m_bTopDownPan = false;
+    bool m_bGroundWalk = false;
 
     // Zoom (height) limits and per-tick step for the top-down mouse-wheel zoom.
     static constexpr float TOPDOWN_MIN_HEIGHT = 4000.0f;
     static constexpr float TOPDOWN_MAX_HEIGHT = 58000.0f;
     static constexpr float TOPDOWN_WHEEL_STEP = 1800.0f;
+
+    static constexpr float WALK_EYE_HEIGHT = 150.0f;
+    static constexpr float WALK_START_PITCH = -78.0f;
+    static constexpr float WALK_HORIZONTAL_FOV = 70.0f;
+    static constexpr float WALK_FAR_PLANE = 6000.0f;
+    static constexpr float WALK_OBJECT_CULL_RANGE = 4000.0f;
 
     // State preservation across toggles
     bool m_bHasSavedState = false;
@@ -122,6 +131,8 @@ private:
     void HandleInput();
     void HandleMovement();
     void HandleTopDownMovement();
+    void HandleGroundMovement();
+    bool IsWalkableAt(float x, float y) const;
     void ReadMovementInput(float& outForward, float& outStrafe, float& outVertical);
     void ComputeCameraTransform();
     void UpdateFrustum();

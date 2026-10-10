@@ -6,6 +6,10 @@
 #include "Render/Textures/ZzzOpenglUtil.h"  // For vec3_t
 
 // Login scene lifecycle
+void ConfigureStandaloneMapPreview(bool enabled, int worldFolderNumber, const wchar_t* controlPath, const wchar_t* statePath);
+bool IsStandaloneMapPreview();
+bool ConsumeStandaloneMapPreviewTeleport(float& x, float& y);
+void PublishStandaloneMapPreviewCamera(float x, float y, float z, float yaw);
 void CreateLogInScene();
 void NewMoveLogInScene();
 bool NewRenderLogInScene(HDC hDC);

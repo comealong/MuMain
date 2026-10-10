@@ -15,7 +15,9 @@
 #elif defined(__APPLE__)
 #include <mach-o/dyld.h>
 #endif
+#include <algorithm>
 #include <clocale>
+#include <cwchar>
 #include <filesystem>
 #include <optional>
 #include <utility>
@@ -30,6 +32,7 @@
 #include "Engine/Object/ZzzOpenData.h"
 #include "Scenes/SceneCore.h"
 #include "Scenes/SceneManager.h"
+#include "Scenes/LoginScene.h"
 #include "Network/Reconnect/ReconnectManager.h"
 #include "Network/IncomingPacketQueue.h"
 #include "Core/Time/FrameTimerScheduler.h"
@@ -1923,6 +1926,54 @@ static void InitializeWorkingDirectoryAndLog()
     mu::log::Init();
 }
 
+static std::vector<std::wstring> ParseStartupArguments(const wchar_t* commandLine)
+{
+    std::vector<std::wstring> arguments;
+    std::wstring current;
+    bool quoted = false;
+    if (commandLine == nullptr)
+        return arguments;
+    for (const wchar_t* cursor = commandLine; ; ++cursor)
+    {
+        const wchar_t character = *cursor;
+        if (character == L'"')
+            quoted = !quoted;
+        else if ((character == L' ' || character == L'\0') && !quoted)
+        {
+            if (!current.empty())
+            {
+                arguments.push_back(std::move(current));
+                current.clear();
+            }
+            if (character == L'\0')
+                break;
+        }
+        else
+            current.push_back(character);
+    }
+    return arguments;
+}
+
+static bool FindStartupArgument(const std::vector<std::wstring>& arguments, const wchar_t* name,
+                                std::wstring& value)
+{
+    for (size_t index = 0; index < arguments.size(); ++index)
+    {
+        if (arguments[index] == name && index + 1 < arguments.size())
+        {
+            value = arguments[index + 1];
+            return true;
+        }
+        const std::wstring prefix = std::wstring(name) + L"=";
+        if (arguments[index].rfind(prefix, 0) == 0)
+        {
+            value = arguments[index].substr(prefix.size());
+            return true;
+        }
+    }
+    return false;
+}
+
 #ifdef _WIN32
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int nCmdShow)
 #else
@@ -1944,6 +1995,22 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int nC
     std::wstring portableCommandLine = BuildPortableCommandLine(szCmdLine);
     wchar_t* lpszCommandLine = portableCommandLine.data();
 #endif
+    const auto startupArguments = ParseStartupArguments(lpszCommandLine);
+    const bool standaloneMapPreview =
+        std::find(startupArguments.begin(), startupArguments.end(), L"--map-preview") != startupArguments.end();
+    std::wstring dataRootArgument;
+    FindStartupArgument(startupArguments, L"--data-root", dataRootArgument);
+    std::wstring previewWorldArgument;
+    const int previewWorldNumber = FindStartupArgument(startupArguments, L"--preview-world", previewWorldArgument)
+                                       ? std::wcstol(previewWorldArgument.c_str(), nullptr, 10)
+                                       : 1;
+    std::wstring previewControlPath;
+    std::wstring previewStatePath;
+    FindStartupArgument(startupArguments, L"--preview-control", previewControlPath);
+    FindStartupArgument(startupArguments, L"--preview-state", previewStatePath);
+    ConfigureStandaloneMapPreview(standaloneMapPreview, previewWorldNumber,
+                                  previewControlPath.c_str(), previewStatePath.c_str());
+
     wchar_t lpszFile[MAX_PATH];
     WORD wVersion[4] = {
         0,
@@ -2073,8 +2140,11 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int nC
 
     const SDL_WindowFlags windowFlags = Core::Platform::BuildSDLWindowFlags(g_bUseWindowMode != TRUE, false);
 
+    const std::string windowTitle = standaloneMapPreview
+                                        ? "MU Map Preview - World " + std::to_string(previewWorldNumber)
+                                        : "MU Online";
     g_sdlWindow =
-        SDL_CreateWindow("MU Online", static_cast<int>(WindowWidth), static_cast<int>(WindowHeight), windowFlags);
+        SDL_CreateWindow(windowTitle.c_str(), static_cast<int>(WindowWidth), static_cast<int>(WindowHeight), windowFlags);
     if (!g_sdlWindow)
     {
         g_ErrorReport.Write(L"> SDL_CreateWindow failed.\r\n");
@@ -2197,6 +2267,19 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int nC
     g_ErrorReport.AddSeparator();
 
     setlocale(LC_ALL, "");
+
+    if (!dataRootArgument.empty())
+    {
+        std::error_code pathError;
+        std::filesystem::current_path(dataRootArgument, pathError);
+        if (pathError)
+        {
+            mu::log::Get("startup")->error("Cannot set map preview data root: {}", pathError.message());
+            ShutdownRendererWindow();
+            SDL_Quit();
+            return FALSE;
+        }
+    }
 
     CInput::Instance().Create(g_hWnd, WindowWidth, WindowHeight);
 

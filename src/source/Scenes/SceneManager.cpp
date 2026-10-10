@@ -98,6 +98,7 @@ static bool g_bShowDebugInfo =
 #endif
 
 static bool g_bShowFpsCounter = false;
+static bool s_bDebugInfoToggleKeyPressed = false;
 
 void SetShowDebugInfo(bool enabled)
 {
@@ -107,6 +108,15 @@ void SetShowDebugInfo(bool enabled)
         ResetFrameStats();
     g_bShowDebugInfo = enabled;
     if (enabled) g_bShowFpsCounter = false;
+}
+
+static void HandleDebugInfoHotkey()
+{
+    const bool keyDown = Core::Input::IsKeyDown(VK_F6);
+    if (keyDown && !s_bDebugInfoToggleKeyPressed)
+        SetShowDebugInfo(!g_bShowDebugInfo);
+
+    s_bDebugInfoToggleKeyPressed = keyDown;
 }
 
 void SetShowFpsCounter(bool enabled)
@@ -489,6 +499,7 @@ void UpdateSceneState()
     // below sees an injected key or click exactly as it sees a device.
     Core::Input::Synthetic::BeginFrame();
     g_pNewKeyInput->ScanAsyncKeyState();
+    HandleDebugInfoHotkey();
     g_dwMouseUseUIID = 0;
 
     UpdateActiveScene();

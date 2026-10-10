@@ -37,6 +37,7 @@
 #include "UI/Scaling/UITransform.h"
 #include "Camera/CameraProjection.h"
 #include "Camera/CameraManager.h"
+#include "Scenes/LoginScene.h"
 #include "Camera/CameraMode.h"
 #ifdef _EDITOR
 #include "Camera/FrustumRenderer.h"
@@ -74,6 +75,7 @@ extern CUIMapName* g_pUIMapName;
 extern int MouseX;
 extern vec3_t MouseTarget;
 extern int EditFlag;
+extern bool IsStandaloneMapPreview();
 
 static bool RequireLeavesEffect()
 {
@@ -319,6 +321,19 @@ static void UpdateGameEntities()
  */
 void MoveMainScene()
 {
+    if (IsStandaloneMapPreview())
+    {
+        InitializeSceneFrame();
+        MoveObjects();
+        MoveLeaves();
+        MoveBoids();
+        MoveFishs();
+        MoveEffects();
+        MoveJoints();
+        MoveParticles();
+        return;
+    }
+
     if (!InitMainScene)
     {
         InitializeMainScene();
@@ -475,12 +490,13 @@ bool IsWingExtraLayersDisabledDebug()
 static void RenderGameWorld(BYTE& byWaterMap, int width, int height)
 {
 #ifdef _EDITOR
-    // DevEditor render toggle checks
-    bool renderTerrain = DevEditor_ShouldRenderTerrain();
-    bool renderStatic = DevEditor_ShouldRenderStaticObjects();
-    bool renderEffects = DevEditor_ShouldRenderEffects() && !g_bDisableEffectsDebug;
-    bool renderDroppedItems = DevEditor_ShouldRenderDroppedItems();
-    bool renderWeatherEffects = DevEditor_ShouldRenderWeatherEffects();
+    // Keep the offline map preview independent of DevEditor visibility toggles.
+    const bool standalonePreview = IsStandaloneMapPreview();
+    bool renderTerrain = standalonePreview || DevEditor_ShouldRenderTerrain();
+    bool renderStatic = standalonePreview || DevEditor_ShouldRenderStaticObjects();
+    bool renderEffects = standalonePreview || (DevEditor_ShouldRenderEffects() && !g_bDisableEffectsDebug);
+    bool renderDroppedItems = standalonePreview || DevEditor_ShouldRenderDroppedItems();
+    bool renderWeatherEffects = standalonePreview || DevEditor_ShouldRenderWeatherEffects();
 #else
     bool renderTerrain = true;
     bool renderStatic = true;
@@ -684,7 +700,12 @@ bool RenderMainScene()
     BYTE byWaterMap;
 
     // Determine camera position
-    if (MoveMainCamera() == true)
+    const bool cameraLocked = MoveMainCamera();
+    if (IsStandaloneMapPreview())
+    {
+        VectorCopy(g_Camera.Position, cameraPos);
+    }
+    else if (cameraLocked)
     {
         VectorCopy(Hero->Object.StartPosition, cameraPos);
     }
@@ -714,6 +735,7 @@ bool RenderMainScene()
     }
 #endif
 
+    if (!IsStandaloneMapPreview())
     {
         FRAME_PROFILE(UI);
         RenderMainSceneUI();

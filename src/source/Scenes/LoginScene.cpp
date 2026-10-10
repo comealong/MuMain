@@ -4,8 +4,15 @@
 
 #include "stdafx.h"
 #include "LoginScene.h"
+#include <chrono>
+#include <filesystem>
+#include <fstream>
 #include "Camera/CameraUtility.h"
 #include "Camera/CameraManager.h"
+#include "Camera/CameraMode.h"
+#ifdef _EDITOR
+#include "Camera/FreeFlyCamera.h"
+#endif
 #include "Camera/CameraMove.h"
 #include "Audio/DSPlaySound.h"
 #include "Render/Textures/ZzzOpenglUtil.h"
@@ -43,6 +50,60 @@ extern double WorldTime;
 extern HFONT g_hFont;
 extern wchar_t m_ExeVersion[11];
 extern HWND g_hWnd;
+extern bool g_bMapEditorFullTerrain;
+
+namespace
+{
+bool g_bStandaloneMapPreview = false;
+int g_iStandalonePreviewWorldNumber = 1;
+std::filesystem::path g_StandalonePreviewControlPath;
+std::filesystem::path g_StandalonePreviewStatePath;
+std::chrono::steady_clock::time_point g_LastStandalonePreviewStateWrite;
+}
+
+void ConfigureStandaloneMapPreview(bool enabled, int worldFolderNumber, const wchar_t* controlPath, const wchar_t* statePath)
+{
+    g_bStandaloneMapPreview = enabled && worldFolderNumber >= 1 && worldFolderNumber <= 255;
+    g_iStandalonePreviewWorldNumber = g_bStandaloneMapPreview ? worldFolderNumber : 1;
+    g_StandalonePreviewControlPath = controlPath ? controlPath : L"";
+    g_StandalonePreviewStatePath = statePath ? statePath : L"";
+    g_LastStandalonePreviewStateWrite = std::chrono::steady_clock::time_point{};
+}
+
+bool IsStandaloneMapPreview()
+{
+    return g_bStandaloneMapPreview;
+}
+
+bool ConsumeStandaloneMapPreviewTeleport(float& x, float& y)
+{
+    if (!g_bStandaloneMapPreview || g_StandalonePreviewControlPath.empty())
+        return false;
+
+    std::ifstream command(g_StandalonePreviewControlPath);
+    if (!command.is_open() || !(command >> x >> y))
+        return false;
+    command.close();
+
+    std::error_code error;
+    std::filesystem::remove(g_StandalonePreviewControlPath, error);
+    return true;
+}
+
+void PublishStandaloneMapPreviewCamera(float x, float y, float z, float yaw)
+{
+    if (!g_bStandaloneMapPreview || g_StandalonePreviewStatePath.empty())
+        return;
+
+    const auto now = std::chrono::steady_clock::now();
+    if (now - g_LastStandalonePreviewStateWrite < std::chrono::milliseconds(100))
+        return;
+    g_LastStandalonePreviewStateWrite = now;
+
+    std::ofstream state(g_StandalonePreviewStatePath, std::ios::trunc);
+    if (state.is_open())
+        state << x << ' ' << y << ' ' << z << ' ' << yaw << '\n';
+}
 
 #ifdef _EDITOR
 extern "C" float DevEditor_GetLoginTerrainDist();
@@ -275,6 +336,34 @@ void MoveCamera()
 
 void CreateLogInScene()
 {
+    if (IsStandaloneMapPreview())
+    {
+        gMapManager.WorldActive = g_iStandalonePreviewWorldNumber - 1;
+        gMapManager.LoadWorld(gMapManager.WorldActive);
+
+        const float mapCentre = TERRAIN_SIZE * 0.5f * TERRAIN_SCALE;
+        const float mapHeight = RequestTerrainHeight(mapCentre, mapCentre);
+        Vector(mapCentre, mapCentre, mapHeight, Hero->Object.Position);
+        VectorCopy(Hero->Object.Position, Hero->Object.StartPosition);
+
+        g_bMapEditorFullTerrain = false;
+        SceneFlag = MAIN_SCENE;
+        InitMainScene = true;
+        EnableMainRender = true;
+#ifdef _EDITOR
+        if (CameraManager::Instance().GetActiveCamera() == nullptr)
+            CameraManager::Instance().Initialize();
+        CameraManager::Instance().SetCameraMode(CameraMode::FreeFly);
+        if (auto* camera = dynamic_cast<FreeFlyCamera*>(CameraManager::Instance().GetActiveCamera()))
+        {
+            camera->SnapToWalkPosition(Hero->Object.Position);
+        }
+        g_Camera.TopViewEnable = false;
+#endif
+        g_ErrorReport.Write(L"> Offline map preview loaded World%d.\r\n", g_iStandalonePreviewWorldNumber);
+        return;
+    }
+
     EnableMainRender = true;
     gMapManager.WorldActive = WD_73NEW_LOGIN_SCENE;
 
@@ -321,6 +410,17 @@ void CreateLogInScene()
 
 void NewMoveLogInScene()
 {
+    if (IsStandaloneMapPreview())
+    {
+        if (!InitLogIn)
+        {
+            InitLogIn = true;
+            CreateLogInScene();
+        }
+        MoveObjects();
+        return;
+    }
+
     if (!InitLogIn)
     {
         InitLogIn = true;

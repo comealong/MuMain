@@ -6,7 +6,9 @@
 #ifdef _EDITOR
 
 #include "FreeFlyCamera.h"
+#include "Render/Terrain/ZzzLodTerrain.h"
 #include "CameraManager.h"
+#include "Scenes/LoginScene.h"
 #include "Render/Textures/ZzzOpenglUtil.h"
 
 // External globals
@@ -23,6 +25,8 @@ namespace
 
     // Full rotation in degrees, used to wrap yaw into [0, 360).
     constexpr float FULL_ROTATION_DEG = 360.0f;
+
+    constexpr float TOP_DOWN_HFOV = 90.0f;
 
     // Compute the camera forward vector from yaw/pitch in degrees.
     // Matches the OpenGL rendering direction: glRotatef(pitch, 1,0,0) then glRotatef(yaw, 0,0,1).
@@ -73,6 +77,7 @@ void FreeFlyCamera::Reset()
     m_Pitch = 0.0f;
     m_bLooking = false;
     m_bTopDownPan = false;
+    m_bGroundWalk = false;
 }
 
 void FreeFlyCamera::OnActivate(const CameraState& previousState)
@@ -103,6 +108,7 @@ void FreeFlyCamera::SnapToPosition(const vec3_t pos, float yaw, float pitch)
     m_Yaw = yaw;
     m_Pitch = std::clamp(pitch, MIN_PITCH, MAX_PITCH);
     m_bTopDownPan = false;
+    m_bGroundWalk = false;
 }
 
 void FreeFlyCamera::SnapTopDown()
@@ -114,6 +120,7 @@ void FreeFlyCamera::SnapTopDown()
     m_Position[2] = 24000.0f;  // high enough for a 90-deg FOV to frame the map
     m_Yaw = 0.0f;
     m_Pitch = MAX_PITCH;       // as close to straight-down as the camera allows
+    m_Config.hFov = TOP_DOWN_HFOV;
 
     // Push far clip, culling and fog well past the map's far corners so nothing
     // is culled or fogged out from up here.
@@ -124,7 +131,36 @@ void FreeFlyCamera::SnapTopDown()
     m_Config.fogEnd = 60000.0f;
 
     m_bTopDownPan = true;   // arrows pan the map, mouse wheel zooms
+    m_bGroundWalk = false;
 
+    UpdateFrustum();
+}
+
+void FreeFlyCamera::SnapToWalkPosition(const vec3_t position)
+{
+    VectorCopy(position, m_Position);
+    m_Position[2] = RequestTerrainHeight(position[0], position[1]) + WALK_EYE_HEIGHT;
+    m_Yaw = 0.0f;
+    m_Pitch = WALK_START_PITCH;
+    m_Config.hFov = WALK_HORIZONTAL_FOV;
+    m_Config.farPlane = WALK_FAR_PLANE;
+    m_Config.terrainCullRange = WALK_FAR_PLANE;
+    m_Config.objectCullRange = WALK_OBJECT_CULL_RANGE;
+    m_Config.fogStart = WALK_FAR_PLANE * 0.8f;
+    m_Config.fogEnd = WALK_FAR_PLANE;
+    m_bTopDownPan = false;
+    m_bGroundWalk = true;
+    UpdateFrustum();
+}
+
+void FreeFlyCamera::TeleportToWalkPosition(float x, float y)
+{
+    const float maxPosition = static_cast<float>(TERRAIN_SIZE - 1) * TERRAIN_SCALE;
+    m_Position[0] = std::clamp(x, 0.0f, maxPosition);
+    m_Position[1] = std::clamp(y, 0.0f, maxPosition);
+    m_Position[2] = RequestTerrainHeight(m_Position[0], m_Position[1]) + WALK_EYE_HEIGHT;
+    m_bGroundWalk = true;
+    m_bTopDownPan = false;
     UpdateFrustum();
 }
 
@@ -143,8 +179,13 @@ void FreeFlyCamera::SetConfig(const CameraConfig& config)
 bool FreeFlyCamera::Update()
 {
     HandleInput();
+    float teleportX = 0.0f;
+    float teleportY = 0.0f;
+    if (ConsumeStandaloneMapPreviewTeleport(teleportX, teleportY))
+        TeleportToWalkPosition(teleportX, teleportY);
     HandleMovement();
     ComputeCameraTransform();
+    PublishStandaloneMapPreviewCamera(m_Position[0], m_Position[1], m_Position[2], m_Yaw);
 
     // Sync to g_Camera so BeginOpengl uses FreeFly's viewpoint
     VectorCopy(m_State.Position, g_Camera.Position);
@@ -197,10 +238,10 @@ void FreeFlyCamera::ReadMovementInput(float& outForward, float& outStrafe, float
     outStrafe = 0.0f;
     outVertical = 0.0f;
 
-    if (Core::Input::IsKeyDown(VK_UP))    outForward += 1.0f;
-    if (Core::Input::IsKeyDown(VK_DOWN))  outForward -= 1.0f;
-    if (Core::Input::IsKeyDown(VK_LEFT))  outStrafe -= 1.0f;
-    if (Core::Input::IsKeyDown(VK_RIGHT)) outStrafe += 1.0f;
+    if (Core::Input::IsKeyDown(VK_UP) || Core::Input::IsKeyDown('W')) outForward += 1.0f;
+    if (Core::Input::IsKeyDown(VK_DOWN) || Core::Input::IsKeyDown('S')) outForward -= 1.0f;
+    if (Core::Input::IsKeyDown(VK_LEFT) || Core::Input::IsKeyDown('A')) outStrafe -= 1.0f;
+    if (Core::Input::IsKeyDown(VK_RIGHT) || Core::Input::IsKeyDown('D')) outStrafe += 1.0f;
 
     // PageUp/PageDown for vertical movement
     if (Core::Input::IsKeyDown(VK_PRIOR)) outVertical += 1.0f;
@@ -215,6 +256,11 @@ void FreeFlyCamera::HandleMovement()
     if (m_bTopDownPan)
     {
         HandleTopDownMovement();
+        return;
+    }
+    if (m_bGroundWalk)
+    {
+        HandleGroundMovement();
         return;
     }
 
@@ -323,6 +369,49 @@ bool FreeFlyCamera::ComputeMapScreenRect(int& outX, int& outY, int& outSize) con
 
     outX = x; outY = y; outSize = s;
     return true;
+}
+
+void FreeFlyCamera::HandleGroundMovement()
+{
+    float forward, strafe, vertical;
+    ReadMovementInput(forward, strafe, vertical);
+    (void)vertical;
+    const float inputLength = sqrtf(forward * forward + strafe * strafe);
+    if (inputLength == 0.0f)
+        return;
+
+    forward /= inputLength;
+    strafe /= inputLength;
+    float speed = BASE_SPEED * FPS_ANIMATION_FACTOR;
+    if (Core::Input::IsKeyDown(VK_SHIFT))
+        speed *= SPRINT_MULTIPLIER;
+
+    const float yawRad = m_Yaw * (Q_PI / 180.0f);
+    const float forwardX = sinf(yawRad);
+    const float forwardY = cosf(yawRad);
+    const float rightX = cosf(yawRad);
+    const float rightY = -sinf(yawRad);
+    const float deltaX = (forwardX * forward + rightX * strafe) * speed;
+    const float deltaY = (forwardY * forward + rightY * strafe) * speed;
+    const float maxPosition = static_cast<float>(TERRAIN_SIZE - 1) * TERRAIN_SCALE;
+
+    const float nextX = std::clamp(m_Position[0] + deltaX, 0.0f, maxPosition);
+    if (IsWalkableAt(nextX, m_Position[1]))
+        m_Position[0] = nextX;
+
+    const float nextY = std::clamp(m_Position[1] + deltaY, 0.0f, maxPosition);
+    if (IsWalkableAt(m_Position[0], nextY))
+        m_Position[1] = nextY;
+
+    m_Position[2] = RequestTerrainHeight(m_Position[0], m_Position[1]) + WALK_EYE_HEIGHT;
+}
+
+bool FreeFlyCamera::IsWalkableAt(float x, float y) const
+{
+    const int tileX = std::clamp(static_cast<int>(x / TERRAIN_SCALE), 0, TERRAIN_SIZE - 1);
+    const int tileY = std::clamp(static_cast<int>(y / TERRAIN_SCALE), 0, TERRAIN_SIZE - 1);
+    const WORD attribute = TerrainWall[TERRAIN_INDEX(tileX, tileY)];
+    return (attribute & (TW_NOMOVE | TW_NOGROUND)) == 0;
 }
 
 void FreeFlyCamera::HandleTopDownMovement()

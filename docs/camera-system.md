@@ -27,6 +27,7 @@ automatically returns you to Default.
 | Key | Action |
 |-----|--------|
 | **F9** | Cycle to the next camera (Default ↔ Orbital). |
+| **F6** | Show or hide the client debug information overlay. |
 | **F10** | Toggle zoom lock. Default is **on** so the wheel never zooms by accident. |
 | **F11** | Reset the active camera. Default returns to its starting zoom rung; Orbital also resets rotation. |
 | **Mouse wheel** | Zoom in / out (when zoom is unlocked). |

@@ -37,6 +37,7 @@
 #include "Camera/CameraManager.h"
 #include "Camera/Frustum.h"
 #include "Camera/ConvexHull2D.h"
+#include "Scenes/LoginScene.h"
 #include "Engine/Object/CullingConstants.h"
 #include "UI/Scaling/UITransform.h"
 
@@ -2077,7 +2078,8 @@ void CreateFrustrum2D(vec3_t Position)
         if (currentMode == CameraMode::FreeFly)
         {
             ICamera* spectated = CameraManager::Instance().GetSpectatedCamera();
-            const ICamera* cam = spectated ? spectated : CameraManager::Instance().GetActiveCamera();
+            const ICamera* active = CameraManager::Instance().GetActiveCamera();
+            const ICamera* cam = IsStandaloneMapPreview() || !spectated ? active : spectated;
             if (cam)
             {
                 const Frustum& frustum = cam->GetFrustum();
@@ -2363,9 +2365,11 @@ void CreateFrustrum(float xAspect, float yAspect, vec3_t position)
     if (CameraManager::Instance().GetCurrentMode() == CameraMode::FreeFly)
     {
         ICamera* spectated = CameraManager::Instance().GetSpectatedCamera();
-        if (spectated)
+        ICamera* active = CameraManager::Instance().GetActiveCamera();
+        ICamera* cullingCamera = IsStandaloneMapPreview() || !spectated ? active : spectated;
+        if (cullingCamera)
         {
-            const Frustum& frustum = spectated->GetFrustum();
+            const Frustum& frustum = cullingCamera->GetFrustum();
             const Frustum::Plane* planes = frustum.GetPlanes();
             // Planes [0-3] = 4 side planes (same order as legacy)
             for (int i = 0; i < 4; i++)

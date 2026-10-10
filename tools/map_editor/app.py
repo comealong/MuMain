@@ -1,9 +1,12 @@
-"""Standalone 2D and 3D editor for MuMain map data."""
+"""Standalone map editor with exact game-rendered 3D preview."""
 from __future__ import annotations
 
 import struct
 import io
-import sys
+import os
+import subprocess
+import tempfile
+import time
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
@@ -15,7 +18,6 @@ except ImportError as error:
 
 import formats
 import factory
-from viewport3d import Viewport3D
 
 SLOT_NAMES = [
     "TileGrass01", "TileGrass02", "TileGround01", "TileGround02", "TileGround03",
@@ -83,19 +85,36 @@ class MapEditor(tk.Tk):
         self._stroke_snapshot = None
         self._last_cell: tuple[int, int] | None = None
         self._object_selected: int | None = None
-        self._object_dragging = False
-        self._object_grab_offset = (0.0, 0.0)
         self.model_type = tk.IntVar(value=0)
         self.object_model_dir: Path | None = None
-        self.object_models: dict[int, dict] = {}
         self.available_model_types: list[int] = []
-        self.viewport3d = Viewport3D()
-        self.view_mode = tk.StringVar(value="2D")
-        self._orbit_last: tuple[int, int] | None = None
+        self.preview_process: subprocess.Popen | None = None
+        self.preview_control_file: Path | None = None
+        self.preview_state_file: Path | None = None
+        self.preview_position: tuple[float, float, float, float] | None = None
+        self.preview_navigation = tk.BooleanVar(value=False)
+        self._camera_marker_id: int | None = None
+        self._camera_marker_lines: tuple[int, int] | None = None
+        self._preview_poll_active = False
+        self._preview_started_at = 0.0
+        self._pending_preview_target: tuple[float, float, float] | None = None
+        self._preview_sync_warning = False
         self._build_ui()
         self.bind("<Control-o>", lambda _event: self.choose_folder())
         self.bind("<Control-s>", lambda _event: self.save_current())
         self.bind("<Control-z>", lambda _event: self.undo())
+        self.protocol("WM_DELETE_WINDOW", self.close_editor)
+
+    def close_editor(self) -> None:
+        if self.preview_process is not None and self.preview_process.poll() is None:
+            self._preview_poll_active = False
+            self.preview_process.terminate()
+            try:
+                self.preview_process.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                self.preview_process.kill()
+                self.preview_process.wait()
+        self.destroy()
 
     def _build_ui(self) -> None:
         toolbar = ttk.Frame(self, padding=6)
@@ -106,10 +125,9 @@ class MapEditor(tk.Tk):
         self.folder_label = ttk.Label(toolbar, text="(none)")
         self.folder_label.pack(side="left", fill="x", expand=True)
         ttk.Button(toolbar, text="Save current (Ctrl+S)", command=self.save_current).pack(side="right")
-        ttk.Label(toolbar, text="View").pack(side="right", padx=(8, 3))
-        view_box = ttk.Combobox(toolbar, textvariable=self.view_mode, values=("2D", "3D"), width=5, state="readonly")
-        view_box.pack(side="right")
-        view_box.bind("<<ComboboxSelected>>", lambda _e: self.render_map())
+        ttk.Button(toolbar, text="Exact 3D preview…", command=self.launch_engine_preview).pack(side="left", padx=5)
+        ttk.Button(toolbar, text="Refresh 3D", command=self.restart_engine_preview).pack(side="left")
+        ttk.Checkbutton(toolbar, text="Click map to move 3D camera", variable=self.preview_navigation).pack(side="left", padx=8)
 
         body = ttk.Panedwindow(self, orient="horizontal")
         body.pack(fill="both", expand=True, padx=6, pady=4)
@@ -137,7 +155,7 @@ class MapEditor(tk.Tk):
         zoom_box.pack(side="left", padx=5)
         zoom_box.bind("<<ComboboxSelected>>", lambda _e: self.render_map())
         ttk.Checkbutton(top, text="Grid", variable=self.show_grid, command=self.render_map).pack(side="left", padx=6)
-        ttk.Label(top, text="2D: left paint · right lower / clear    3D: middle drag orbit · wheel zoom").pack(side="right")
+        ttk.Label(top, text="Left paint · right lower / clear    Exact 3D preview uses the game renderer").pack(side="right")
 
         frame = ttk.Frame(work)
         frame.pack(fill="both", expand=True)
@@ -156,9 +174,6 @@ class MapEditor(tk.Tk):
         self.canvas.bind("<B3-Motion>", self._paint_motion)
         self.canvas.bind("<ButtonRelease-3>", self._end_stroke)
         self.canvas.bind("<MouseWheel>", self._wheel)
-        self.canvas.bind("<ButtonPress-2>", self._orbit_start)
-        self.canvas.bind("<B2-Motion>", self._orbit_motion)
-        self.canvas.bind("<ButtonRelease-2>", self._orbit_end)
 
         ttk.Label(self, textvariable=self.status, anchor="w", relief="sunken", padding=(6, 3)).pack(fill="x", side="bottom")
 
@@ -217,7 +232,7 @@ class MapEditor(tk.Tk):
         ttk.Label(page, text="Model type to place").pack(anchor="w", pady=(8, 0))
         self.model_type_box = ttk.Combobox(page, textvariable=self.model_type, values=(), width=12, state="readonly")
         self.model_type_box.pack(anchor="w")
-        ttk.Label(page, text="In 3D view: click empty ground to place; drag a model to move it. Double-click table values to edit transforms.", wraplength=240).pack(anchor="w", pady=5)
+        ttk.Label(page, text="Open Exact 3D preview to inspect the game-rendered map. Double-click table values to edit transforms.", wraplength=240).pack(anchor="w", pady=5)
 
     def _tab_changed(self, _event=None) -> None:
         tabs = _event.widget if _event else None
@@ -225,6 +240,86 @@ class MapEditor(tk.Tk):
             name = tabs.tab(tabs.select(), "text")
             self.mode.set(name)
             self.render_map()
+
+    def launch_engine_preview(self) -> None:
+        if self.folder is None:
+            messagebox.showinfo("3D preview", "Open a map from Data/WorldN first.")
+            return
+        world_suffix = self.folder.name.lower().removeprefix("world")
+        if not world_suffix.isdigit():
+            messagebox.showerror("3D preview", "The map folder must be named WorldN.")
+            return
+        data_root = self.folder.parent.parent
+        if not (data_root / "Data").is_dir():
+            messagebox.showerror("3D preview", "The selected WorldN folder must be inside a client root containing Data/.")
+            return
+        if self.preview_process is not None and self.preview_process.poll() is None:
+            self.status.set("The exact game renderer is already running.")
+            return
+
+        repository = Path(__file__).resolve().parents[2]
+        candidates = (
+            repository / "out" / "build" / "windows-x64-vs2022" / "src" / "Release" / "Main.exe",
+            repository / "out" / "build" / "windows-x64-vs2022" / "src" / "Debug" / "Main.exe",
+            repository / "out" / "build" / "windows-x64-mueditor" / "src" / "Release" / "Main.exe",
+            repository / "out" / "build" / "windows-x64-mueditor" / "src" / "Debug" / "Main.exe",
+        )
+        executable = next((path for path in candidates if path.is_file()), None)
+        if executable is None:
+            selected = filedialog.askopenfilename(
+                title="Choose a client rebuilt from this repo with ENABLE_EDITOR and --map-preview support",
+                initialdir=str(data_root),
+                filetypes=(("MuMain client", "Main.exe"), ("Executables", "*.exe"), ("All files", "*.*")),
+            )
+            if not selected:
+                return
+            executable = Path(selected)
+
+        sync_dir = Path(tempfile.gettempdir()) / f"MuMainMapPreview-{os.getpid()}"
+        sync_dir.mkdir(parents=True, exist_ok=True)
+        self.preview_control_file = sync_dir / "camera-command.txt"
+        self.preview_state_file = sync_dir / "camera-state.txt"
+        for stale_file in (self.preview_control_file, self.preview_state_file):
+            try:
+                stale_file.unlink()
+            except FileNotFoundError:
+                pass
+        arguments = [
+            str(executable),
+            "--map-preview",
+            "--preview-world",
+            world_suffix,
+            "--data-root",
+            str(data_root),
+            "--preview-control",
+            str(self.preview_control_file),
+            "--preview-state",
+            str(self.preview_state_file),
+        ]
+        try:
+            self.preview_process = subprocess.Popen(arguments, cwd=executable.parent)
+        except OSError as error:
+            messagebox.showerror("3D preview failed", str(error))
+            return
+        self.preview_position = None
+        self._pending_preview_target = None
+        self._preview_sync_warning = False
+        self._preview_started_at = time.monotonic()
+        self._preview_poll_active = True
+        self.after(150, self._poll_preview_state)
+        self.status.set(f"Started the client renderer for World{world_suffix} without connecting to a server. Enable map navigation and click a tile to move.")
+
+    def restart_engine_preview(self) -> None:
+        if self.preview_process is not None and self.preview_process.poll() is None:
+            self.preview_process.terminate()
+            try:
+                self.preview_process.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                self.preview_process.kill()
+                self.preview_process.wait()
+        self.preview_process = None
+        self._preview_poll_active = False
+        self.launch_engine_preview()
 
     def create_map_dialog(self) -> None:
         dialog = tk.Toplevel(self)
@@ -318,43 +413,16 @@ class MapEditor(tk.Tk):
         if not suffix.isdigit():
             self.object_model_dir = None
             self.available_model_types = []
-            self.object_models.clear()
             return
         self.object_model_dir = folder.parent / f"Object{suffix}"
         self.available_model_types = sorted(
             int(p.stem[len("Object"):]) - 1 for p in self.object_model_dir.glob("Object*.bmd")
             if p.stem[len("Object"):].isdigit() and int(p.stem[len("Object"):]) > 0
         ) if self.object_model_dir.is_dir() else []
-        self.object_models.clear()
         if hasattr(self, "model_type_box"):
             self.model_type_box.configure(values=tuple(self.available_model_types))
             if self.available_model_types and self.model_type.get() not in self.available_model_types:
                 self.model_type.set(self.available_model_types[0])
-
-    def _get_object_model(self, type_id: int):
-        if type_id in self.object_models:
-            return self.object_models[type_id]
-        if self.object_model_dir is None:
-            return None
-        model_path = self.object_model_dir / f"Object{type_id + 1}.bmd"
-        if not model_path.is_file():
-            return None
-        scripts = Path(__file__).resolve().parents[2] / ".agents" / "skills" / "mu-art-pipeline" / "scripts"
-        if str(scripts) not in sys.path:
-            sys.path.insert(0, str(scripts))
-        try:
-            from mu_art_pipeline.bmd import parse_bmd
-            model = parse_bmd(model_path)
-            for mesh in model.get("meshes", []):
-                texture = mesh.get("texture", "")
-                texture_path = next((candidate for extension in (".OZJ", ".OZT", ".jpg", ".tga")
-                                     if (candidate := self.object_model_dir / f"{texture}{extension}").is_file()), None)
-                preview = image_from_resource(texture_path) if texture_path else None
-                mesh["preview_color"] = preview.resize((1, 1)).getpixel((0, 0)) if preview else (158, 143, 105)
-            self.object_models[type_id] = model
-            return model
-        except (OSError, ValueError, struct.error):
-            return None
 
     def _load_palette(self, folder: Path) -> None:
         self.palette.delete(0, "end")
@@ -411,19 +479,6 @@ class MapEditor(tk.Tk):
         if not hasattr(self, "canvas"):
             return
         self.canvas.delete("all")
-        if self.view_mode.get() == "3D" and self.mapping is not None:
-            width = max(800, self.canvas.winfo_width())
-            height = max(600, self.canvas.winfo_height())
-            height_values = self.height_values if self.height_values is not None else bytearray(CELL_COUNT)
-            for type_id in {obj.type_id for obj in self.objects}:
-                self._get_object_model(type_id)
-            image = self.viewport3d.render(width, height, self.mapping, height_values,
-                                           self.tile_colors, self.objects, self.object_models,
-                                           self.mode.get(), self.attributes.values if self.attributes else None)
-            self._photo = ImageTk.PhotoImage(image)
-            self.canvas.create_image(0, 0, image=self._photo, anchor="nw")
-            self.canvas.configure(scrollregion=(0, 0, image.width, image.height))
-            return
         zoom = max(1, int(self.zoom.get()))
         mode = self._tab_name()
         image = Image.new("RGB", (256, 256))
@@ -433,13 +488,16 @@ class MapEditor(tk.Tk):
             pixels[x, y] = self._cell_color(index, mode)
         if self.show_grid.get() and zoom >= 3:
             draw = ImageDraw.Draw(image)
-            for x in range(0, 256, 16): draw.line((x, 0, x, 255), fill=(18, 20, 23))
-            for y in range(0, 256, 16): draw.line((0, y, 255, y), fill=(18, 20, 23))
+            for x in range(0, 256, 16):
+                draw.line((x, 0, x, 255), fill=(18, 20, 23))
+            for y in range(0, 256, 16):
+                draw.line((0, y, 255, y), fill=(18, 20, 23))
         image = image.resize((256 * zoom, 256 * zoom), Image.Resampling.NEAREST)
         self._photo = ImageTk.PhotoImage(image)
         self.canvas.create_image(0, 0, image=self._photo, anchor="nw")
         self.canvas.configure(scrollregion=(0, 0, image.width, image.height))
         self._draw_objects()
+        self._draw_camera_marker()
 
     def _draw_objects(self) -> None:
         if self.mode.get() != "Objects" or not self.objects:
@@ -450,6 +508,19 @@ class MapEditor(tk.Tk):
             color = "#fff06a" if i == self._object_selected else "#e7ebf1"
             self.canvas.create_oval(cx-3, cy-3, cx+3, cy+3, fill=color, outline="#17191e", tags=(f"object-{i}",))
 
+    def _draw_camera_marker(self) -> None:
+        self._camera_marker_id = None
+        self._camera_marker_lines = None
+        if self.preview_position is None:
+            return
+        zoom = int(self.zoom.get())
+        x, y = self.preview_position[0] / 100 * zoom, self.preview_position[1] / 100 * zoom
+        radius = max(5, zoom * 2)
+        self._camera_marker_id = self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, fill="#ff3040", outline="#ffffff", width=2, tags=("camera-marker",))
+        horizontal = self.canvas.create_line(x - radius - 4, y, x + radius + 4, y, fill="#ffffff", width=1, tags=("camera-marker",))
+        vertical = self.canvas.create_line(x, y - radius - 4, x, y + radius + 4, fill="#ffffff", width=1, tags=("camera-marker",))
+        self._camera_marker_lines = (horizontal, vertical)
+
     def _canvas_cell(self, event) -> tuple[int, int] | None:
         x = int(self.canvas.canvasx(event.x) // int(self.zoom.get()))
         y = int(self.canvas.canvasy(event.y) // int(self.zoom.get()))
@@ -457,41 +528,12 @@ class MapEditor(tk.Tk):
         return x, y
 
     def _begin_stroke(self, event) -> None:
-        if self.view_mode.get() == "3D":
-            cell = self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
-            if cell is None:
-                return
-            if self.mode.get() == "Objects" and event.num == 1:
-                object_index = self.viewport3d.pick_object(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
-                if object_index is not None:
-                    self._object_selected = object_index
-                    self.object_tree.selection_set(str(object_index))
-                    obj = self.objects[object_index]
-                    self._object_grab_offset = (obj.x - cell[0] * 100.0, obj.y - cell[1] * 100.0)
-                    self._object_dragging = True
-                    self.render_map()
-                    return
-                z = self.height_values[cell[1] * 256 + cell[0]] * 1.5 if self.height_values else 0.0
-                obj = formats.MapObject(self.model_type.get(), cell[0] * 100.0, cell[1] * 100.0,
-                                        z, 0.0, 0.0, 0.0, 1.0)
-                self.objects.append(obj)
-                self._object_selected = len(self.objects) - 1
-                self._refresh_objects()
-                self.object_tree.selection_set(str(self._object_selected))
-                self._object_dragging = True
-                self._object_grab_offset = (0.0, 0.0)
-                self.render_map()
-                return
-            if self.folder is None:
-                return
-            self._stroke_snapshot = self._snapshot()
-            self._stroke_active = True
-            self._active_button = event.num
-            self._last_cell = None
-            self._paint_cell(cell, event.num)
-            return
         cell = self._canvas_cell(event)
-        if cell is None or self.folder is None: return
+        if cell is None or self.folder is None:
+            return
+        if event.num == 1 and self.preview_navigation.get():
+            self._move_preview_camera(cell)
+            return
         self._stroke_snapshot = self._snapshot()
         self._stroke_active = True
         self._active_button = event.num
@@ -499,42 +541,75 @@ class MapEditor(tk.Tk):
         self._paint_cell(cell, self._active_button)
 
     def _paint_motion(self, event) -> None:
-        if self.view_mode.get() == "3D" and self._object_dragging and self._object_selected is not None:
-            cell = self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
-            if cell:
-                obj = self.objects[self._object_selected]
-                obj.x = max(0.0, min(25500.0, cell[0] * 100.0 + self._object_grab_offset[0]))
-                obj.y = max(0.0, min(25500.0, cell[1] * 100.0 + self._object_grab_offset[1]))
-                if self.height_values is not None:
-                    obj.z = self.height_values[cell[1] * 256 + cell[0]] * 1.5
-                self._refresh_objects()
-                self.object_tree.selection_set(str(self._object_selected))
-                self.render_map()
+        if not self._stroke_active:
             return
-        if not self._stroke_active: return
-        cell = (self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y)) if self.view_mode.get() == "3D"
-                else self._canvas_cell(event))
-        if cell is not None: self._paint_cell(cell, self._active_button)
+        cell = self._canvas_cell(event)
+        if cell is not None:
+            self._paint_cell(cell, self._active_button)
+
+    def _move_preview_camera(self, cell: tuple[int, int]) -> None:
+        if self.preview_process is None or self.preview_process.poll() is not None or self.preview_control_file is None:
+            self.status.set("Start the 3D preview before using map navigation.")
+            return
+        x, y = cell
+        temporary = self.preview_control_file.with_suffix(".tmp")
+        try:
+            temporary.write_text(f"{x * 100 + 50} {y * 100 + 50}\n", encoding="ascii")
+            temporary.replace(self.preview_control_file)
+        except OSError as error:
+            self.status.set(f"Could not move preview camera: {error}")
+            return
+        target_x, target_y = x * 100 + 50, y * 100 + 50
+        self._pending_preview_target = (target_x, target_y, time.monotonic())
+        self.status.set(f"Sent camera move to tile ({x}, {y}); waiting for the renderer to acknowledge.")
+
+    def _poll_preview_state(self) -> None:
+        if not self._preview_poll_active:
+            return
+        if self.preview_process is None or self.preview_process.poll() is not None:
+            self._preview_poll_active = False
+            return
+        if self.preview_state_file is not None:
+            try:
+                values = [float(value) for value in self.preview_state_file.read_text(encoding="ascii").split()]
+                if len(values) >= 4:
+                    updated = (values[0], values[1], values[2], values[3])
+                    old = self.preview_position
+                    if self._pending_preview_target is not None:
+                        target_x, target_y, _sent_at = self._pending_preview_target
+                        if abs(updated[0] - target_x) < 60 and abs(updated[1] - target_y) < 60:
+                            self._pending_preview_target = None
+                            self.status.set(f"3D camera at tile ({int(updated[0] / 100)}, {int(updated[1] / 100)}).")
+                    if old is None or abs(old[0] - updated[0]) > 25 or abs(old[1] - updated[1]) > 25:
+                        self.preview_position = updated
+                        if self._camera_marker_id is not None:
+                            zoom = int(self.zoom.get())
+                            x, y = updated[0] / 100 * zoom, updated[1] / 100 * zoom
+                            radius = max(5, zoom * 2)
+                            self.canvas.coords(self._camera_marker_id, x - radius, y - radius, x + radius, y + radius)
+                            if self._camera_marker_lines is not None:
+                                self.canvas.coords(self._camera_marker_lines[0], x - radius - 4, y, x + radius + 4, y)
+                                self.canvas.coords(self._camera_marker_lines[1], x, y - radius - 4, x, y + radius + 4)
+                        else:
+                            self._draw_camera_marker()
+            except (OSError, ValueError):
+                pass
+        now = time.monotonic()
+        if self.preview_position is None and not self._preview_sync_warning and now - self._preview_started_at > 5:
+            self._preview_sync_warning = True
+            self.status.set("3D renderer is not reporting its camera position. Rebuild Main.exe from the latest source, close this preview, then reopen it.")
+        if self._pending_preview_target is not None:
+            target_x, target_y, sent_at = self._pending_preview_target
+            if now - sent_at > 2:
+                if self.preview_control_file is not None and self.preview_control_file.exists():
+                    self.status.set("Renderer did not consume the camera command. Rebuild Main.exe from the latest source, close it, and reopen the preview.")
+                else:
+                    self.status.set("Renderer has not acknowledged the camera move. Check the preview log and rebuild Main.exe if needed.")
+        self.after(150, self._poll_preview_state)
 
     def _end_stroke(self, _event=None) -> None:
         self._stroke_active = False
-        self._object_dragging = False
         self._last_cell = None
-
-    def _orbit_start(self, event) -> None:
-        if self.view_mode.get() == "3D":
-            self._orbit_last = (event.x, event.y)
-
-    def _orbit_motion(self, event) -> None:
-        if self.view_mode.get() != "3D" or self._orbit_last is None:
-            return
-        x, y = self._orbit_last
-        self.viewport3d.orbit(event.x - x, event.y - y)
-        self._orbit_last = (event.x, event.y)
-        self.render_map()
-
-    def _orbit_end(self, _event=None) -> None:
-        self._orbit_last = None
 
     def _snapshot(self):
         if self.mode.get() == "Texture" and self.mapping:
@@ -595,14 +670,11 @@ class MapEditor(tk.Tk):
         self.render_map()
 
     def _wheel(self, event) -> None:
-        if self.view_mode.get() == "3D":
-            self.viewport3d.zoom(event.delta)
-            self.render_map()
-            return
         values = (2, 3, 4, 6, 8)
         current = values.index(self.zoom.get()) if self.zoom.get() in values else 1
-        next_index = max(0, min(len(values)-1, current + (1 if event.delta > 0 else -1)))
-        self.zoom.set(values[next_index]); self.render_map()
+        next_index = max(0, min(len(values) - 1, current + (1 if event.delta < 0 else -1)))
+        self.zoom.set(values[next_index])
+        self.render_map()
 
     def save_current(self) -> None:
         mode = self.mode.get()

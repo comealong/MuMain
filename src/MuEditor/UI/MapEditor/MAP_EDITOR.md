@@ -294,3 +294,8 @@ overlay + undo + two save targets).
 standalone (out-of-game) versions of the attribute editor — same crypto, same byte
 layout, same colours. Useful for bulk/scripted edits and for cross-checking the
 in-game tool.
+
+
+## Python companion with exact 3D preview
+
+The standalone editor is available at tools/map_editor/app.py. Open a map from a client Data/WorldN folder, then choose Exact 3D preview to inspect it in a separate window rendered by the client. The client completes its normal asset initialization first, then opens the selected map without connecting to a game server. This requires a client built with CMake ENABLE_EDITOR enabled. Make edits and save in Python, then choose Refresh 3D to reload the saved map in the renderer.

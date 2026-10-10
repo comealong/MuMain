@@ -1,6 +1,6 @@
 # MuMain Map Editor
 
-A standalone Python desktop tool for viewing and editing MuMain client map data under Data/WorldN. It does not start the game.
+A standalone Python desktop tool for editing MuMain client map data under Data/WorldN, with an exact 3D preview rendered by the client. It does not connect to a game server. Its Exact 3D preview starts the client renderer directly in an offline world scene.
 
 ## Start
 
@@ -8,22 +8,26 @@ Run from the repository root:
 
     python tools/map_editor/app.py
 
-The editor uses Tkinter and Pillow. Open an EncTerrainN.map file from the map Data/WorldN folder. Related EncTerrainN.att, EncTerrainN.obj, and TerrainHeight.OZB files are loaded from that folder when present.
+Open an EncTerrainN.map file from a client root Data/WorldN folder. The matching EncTerrainN.att, EncTerrainN.obj, and TerrainHeight.OZB files load when present.
 
 ## Views and editing
 
 - **2D view:** inspect the full 256×256 map and paint mapping, attributes, or height.
-- **3D view:** orbit with the middle mouse button, zoom with the wheel, and paint the selected terrain mode on the perspective terrain.
-- **Textures:** paint either mapping layer. Painting Layer 2 sets its alpha to opaque; right-click clears that overlay. The 3D view colors each terrain patch from the average color of its selected texture.
+- **Exact 3D preview:** opens a separate renderer window using the game renderer for terrain geometry, texture layers, lighting, water, BMD models, and environmental effects. After normal client asset initialization, the world loads without opening a login connection. Use Refresh 3D after saving from Python to reload the map. The preview starts at ground level. Use WASD or the arrow keys to walk, hold the right mouse button to look, and hold Shift to run. Movement follows terrain height and stops at blocked or no-ground tiles. Enable “Click map to move 3D camera” in the Python editor to teleport by clicking a map tile; the red crosshair tracks the live camera position on the 2D map. If the renderer does not acknowledge the command or publish its position, the editor reports that the client needs to be rebuilt from the latest source. This is useful for inspecting water, blocked regions, and the map edges.
+- **Textures:** paint either mapping layer. Painting Layer 2 sets its alpha to opaque; right-click clears that overlay.
 - **Attributes:** paint Walkable (0), Safezone (1), Blocked (4), No ground (8), or Water (16). Right-click paints Walkable.
 - **Height:** left drag raises and right drag lowers the height brush. Stored values stay within the native 0–255 range.
-- **Objects:** the table edits type, world position, rotation, and scale. In 3D view, click ground to place the selected object type, or drag an object marker to move it. BMD meshes are drawn with flat colors sampled from their material textures; this lightweight preview is not the game full textured renderer.
-- **Undo:** Ctrl+Z restores the previous terrain painting stroke.
+- **Objects:** the table edits type, world position, rotation, and scale. Refresh the 3D preview after saving to inspect changed models in the game renderer.
+- **Undo:** Ctrl+Z restores the previous terrain painting stroke in the Python editor.
 - **Save:** Ctrl+S saves the current tab native file. Before the first overwrite in a session, the editor keeps a .bak copy beside the source.
+
+## Renderer build
+
+The exact preview requires a client rebuilt from this repository with CMake ENABLE_EDITOR enabled. The app looks for Main.exe under out/build/windows-x64-vs2022/src or out/build/windows-x64-mueditor/src and otherwise asks you to select it. It passes the selected client root as --data-root, so map and model resources come from that root while bundled fonts/config stay beside the executable.
 
 ## New maps
 
-Choose New map…, select a source WorldN folder and the target Data folder, then choose an unused world number. The editor creates blank EncTerrainN.map, .att, .obj, and TerrainHeight.OZB files, and copies the source world terrain textures. If the corresponding ObjectN folder does not exist, it also copies the source object models. It does not register the new world in client C++ or server configuration; game integration still needs to be configured separately.
+Choose New map…, select a source WorldN folder and the target Data folder, then choose an unused world number. The editor creates blank EncTerrainN.map, .att, .obj, and TerrainHeight.OZB files, and copies the source world terrain textures. If the corresponding ObjectN folder does not exist, it also copies the source object models. It does not register the new world in client C++ or server configuration.
 
 ## Client and server attributes
 

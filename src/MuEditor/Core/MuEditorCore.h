@@ -24,6 +24,7 @@ public:
     bool IsEnabled() const { return m_bEditorMode; }
     void SetEnabled(bool enabled) { m_bEditorMode = enabled; }
     void ToggleEditor() { m_bEditorMode = !m_bEditorMode; }
+    void OpenMapEditor() { m_bShowMapEditor = true; }
 
     bool IsShowingItemEditor() const { return m_bShowItemEditor; }
     bool IsShowingSkillEditor() const { return m_bShowSkillEditor; }
