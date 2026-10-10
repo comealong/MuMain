@@ -1,8 +1,9 @@
-"""Standalone 2D editor for MuMain map data."""
+"""Standalone 2D and 3D editor for MuMain map data."""
 from __future__ import annotations
 
 import struct
 import io
+import sys
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
@@ -13,6 +14,8 @@ except ImportError as error:
     raise SystemExit("Map Editor requires Pillow. Install it with: python -m pip install Pillow") from error
 
 import formats
+import factory
+from viewport3d import Viewport3D
 
 SLOT_NAMES = [
     "TileGrass01", "TileGrass02", "TileGround01", "TileGround02", "TileGround03",
@@ -80,6 +83,15 @@ class MapEditor(tk.Tk):
         self._stroke_snapshot = None
         self._last_cell: tuple[int, int] | None = None
         self._object_selected: int | None = None
+        self._object_dragging = False
+        self._object_grab_offset = (0.0, 0.0)
+        self.model_type = tk.IntVar(value=0)
+        self.object_model_dir: Path | None = None
+        self.object_models: dict[int, dict] = {}
+        self.available_model_types: list[int] = []
+        self.viewport3d = Viewport3D()
+        self.view_mode = tk.StringVar(value="2D")
+        self._orbit_last: tuple[int, int] | None = None
         self._build_ui()
         self.bind("<Control-o>", lambda _event: self.choose_folder())
         self.bind("<Control-s>", lambda _event: self.save_current())
@@ -89,10 +101,15 @@ class MapEditor(tk.Tk):
         toolbar = ttk.Frame(self, padding=6)
         toolbar.pack(fill="x")
         ttk.Button(toolbar, text="Open map file…", command=self.choose_folder).pack(side="left")
+        ttk.Button(toolbar, text="New map…", command=self.create_map_dialog).pack(side="left", padx=(5, 0))
         ttk.Label(toolbar, text="Map folder:").pack(side="left", padx=(12, 4))
         self.folder_label = ttk.Label(toolbar, text="(none)")
         self.folder_label.pack(side="left", fill="x", expand=True)
         ttk.Button(toolbar, text="Save current (Ctrl+S)", command=self.save_current).pack(side="right")
+        ttk.Label(toolbar, text="View").pack(side="right", padx=(8, 3))
+        view_box = ttk.Combobox(toolbar, textvariable=self.view_mode, values=("2D", "3D"), width=5, state="readonly")
+        view_box.pack(side="right")
+        view_box.bind("<<ComboboxSelected>>", lambda _e: self.render_map())
 
         body = ttk.Panedwindow(self, orient="horizontal")
         body.pack(fill="both", expand=True, padx=6, pady=4)
@@ -120,7 +137,7 @@ class MapEditor(tk.Tk):
         zoom_box.pack(side="left", padx=5)
         zoom_box.bind("<<ComboboxSelected>>", lambda _e: self.render_map())
         ttk.Checkbutton(top, text="Grid", variable=self.show_grid, command=self.render_map).pack(side="left", padx=6)
-        ttk.Label(top, text="Left drag paints · right drag lowers / clears").pack(side="right")
+        ttk.Label(top, text="2D: left paint · right lower / clear    3D: middle drag orbit · wheel zoom").pack(side="right")
 
         frame = ttk.Frame(work)
         frame.pack(fill="both", expand=True)
@@ -139,6 +156,9 @@ class MapEditor(tk.Tk):
         self.canvas.bind("<B3-Motion>", self._paint_motion)
         self.canvas.bind("<ButtonRelease-3>", self._end_stroke)
         self.canvas.bind("<MouseWheel>", self._wheel)
+        self.canvas.bind("<ButtonPress-2>", self._orbit_start)
+        self.canvas.bind("<B2-Motion>", self._orbit_motion)
+        self.canvas.bind("<ButtonRelease-2>", self._orbit_end)
 
         ttk.Label(self, textvariable=self.status, anchor="w", relief="sunken", padding=(6, 3)).pack(fill="x", side="bottom")
 
@@ -194,7 +214,10 @@ class MapEditor(tk.Tk):
         ttk.Button(row, text="Add", command=self.add_object).pack(side="left", expand=True, fill="x")
         ttk.Button(row, text="Delete", command=self.delete_object).pack(side="left", expand=True, fill="x", padx=(5, 0))
         ttk.Button(page, text="Save objects (.obj)", command=self.save_objects).pack(fill="x", pady=3)
-        ttk.Label(page, text="Double-click a value to edit. Model preview is not available in 2D mode.", wraplength=240).pack(anchor="w", pady=5)
+        ttk.Label(page, text="Model type to place").pack(anchor="w", pady=(8, 0))
+        self.model_type_box = ttk.Combobox(page, textvariable=self.model_type, values=(), width=12, state="readonly")
+        self.model_type_box.pack(anchor="w")
+        ttk.Label(page, text="In 3D view: click empty ground to place; drag a model to move it. Double-click table values to edit transforms.", wraplength=240).pack(anchor="w", pady=5)
 
     def _tab_changed(self, _event=None) -> None:
         tabs = _event.widget if _event else None
@@ -202,6 +225,47 @@ class MapEditor(tk.Tk):
             name = tabs.tab(tabs.select(), "text")
             self.mode.set(name)
             self.render_map()
+
+    def create_map_dialog(self) -> None:
+        dialog = tk.Toplevel(self)
+        dialog.title("Create a blank MU map")
+        dialog.transient(self)
+        dialog.grab_set()
+        frame = ttk.Frame(dialog, padding=12)
+        frame.pack(fill="both", expand=True)
+        ttk.Label(frame, text="New World folder number (WorldN)").grid(row=0, column=0, sticky="w")
+        existing = set()
+        if self.folder:
+            existing = {int(p.name[5:]) for p in self.folder.parent.glob("World*") if p.name[5:].isdigit()}
+        next_world = next((value for value in range(1, 256) if value not in existing), 1)
+        number = tk.IntVar(value=next_world)
+        ttk.Spinbox(frame, from_=1, to=255, textvariable=number, width=10).grid(row=0, column=1, sticky="w", padx=8)
+        ttk.Label(frame, text="Template World folder").grid(row=1, column=0, sticky="w", pady=(10, 0))
+        source = tk.StringVar(value=str(self.folder) if self.folder else "")
+        ttk.Entry(frame, textvariable=source, width=56).grid(row=1, column=1, sticky="ew", padx=8, pady=(10, 0))
+        ttk.Button(frame, text="Browse…", command=lambda: source.set(filedialog.askdirectory(parent=dialog) or source.get())).grid(row=1, column=2, pady=(10, 0))
+        ttk.Label(frame, text="Target Data folder").grid(row=2, column=0, sticky="w", pady=(10, 0))
+        data_root = tk.StringVar(value=str(self.folder.parent) if self.folder else "")
+        ttk.Entry(frame, textvariable=data_root, width=56).grid(row=2, column=1, sticky="ew", padx=8, pady=(10, 0))
+        ttk.Button(frame, text="Browse…", command=lambda: data_root.set(filedialog.askdirectory(parent=dialog) or data_root.get())).grid(row=2, column=2, pady=(10, 0))
+        ttk.Label(frame, text="Creates blank map files and copies terrain textures. Client map registration is not changed.", wraplength=560).grid(row=3, column=0, columnspan=3, sticky="w", pady=10)
+        def create() -> None:
+            try:
+                result = factory.create_blank_map(Path(data_root.get()), Path(source.get()), number.get())
+            except (OSError, ValueError) as error:
+                messagebox.showerror("Map creation failed", str(error), parent=dialog)
+                return
+            dialog.destroy()
+            self.load_map_file(Path(result["world_folder"]) / f"EncTerrain{number.get()}.map")
+            message = "New map files created. Register this world in the client before expecting it to load in game."
+            if result["objects_copied"]:
+                message += " The template model folder was copied too."
+            messagebox.showinfo("Map created", message, parent=self)
+        buttons = ttk.Frame(frame)
+        buttons.grid(row=4, column=0, columnspan=3, sticky="e")
+        ttk.Button(buttons, text="Cancel", command=dialog.destroy).pack(side="right")
+        ttk.Button(buttons, text="Create", command=create).pack(side="right", padx=6)
+        frame.columnconfigure(1, weight=1)
 
     def choose_folder(self) -> None:
         selected = filedialog.askopenfilename(title="Choose EncTerrainN.map", filetypes=(("Terrain mapping", "EncTerrain*.map"), ("All files", "*.*")))
@@ -238,6 +302,7 @@ class MapEditor(tk.Tk):
         self.attribute_path = att_path if att_path.exists() else None
         self.object_path = obj_path
         self.height_path = height_path if height_path.exists() else None
+        self._load_object_models(folder)
         self.attr_edited = bytearray(CELL_COUNT)
         self.attr_baseline = bytearray(self.attributes.values) if self.attributes else None
         self.server_base = None; self.server_values = None; self.server_baseline = None
@@ -247,6 +312,49 @@ class MapEditor(tk.Tk):
         missing = [name for name, exists in ((".att", self.attributes is not None), ("height", self.height_values is not None)) if not exists]
         self.status.set(f"Loaded {map_path.name}: 256×256, {len(self.objects)} objects" + (f" · missing {', '.join(missing)}" if missing else ""))
         self.render_map()
+
+    def _load_object_models(self, folder: Path) -> None:
+        suffix = folder.name.lower().removeprefix("world")
+        if not suffix.isdigit():
+            self.object_model_dir = None
+            self.available_model_types = []
+            self.object_models.clear()
+            return
+        self.object_model_dir = folder.parent / f"Object{suffix}"
+        self.available_model_types = sorted(
+            int(p.stem[len("Object"):]) - 1 for p in self.object_model_dir.glob("Object*.bmd")
+            if p.stem[len("Object"):].isdigit() and int(p.stem[len("Object"):]) > 0
+        ) if self.object_model_dir.is_dir() else []
+        self.object_models.clear()
+        if hasattr(self, "model_type_box"):
+            self.model_type_box.configure(values=tuple(self.available_model_types))
+            if self.available_model_types and self.model_type.get() not in self.available_model_types:
+                self.model_type.set(self.available_model_types[0])
+
+    def _get_object_model(self, type_id: int):
+        if type_id in self.object_models:
+            return self.object_models[type_id]
+        if self.object_model_dir is None:
+            return None
+        model_path = self.object_model_dir / f"Object{type_id + 1}.bmd"
+        if not model_path.is_file():
+            return None
+        scripts = Path(__file__).resolve().parents[2] / ".agents" / "skills" / "mu-art-pipeline" / "scripts"
+        if str(scripts) not in sys.path:
+            sys.path.insert(0, str(scripts))
+        try:
+            from mu_art_pipeline.bmd import parse_bmd
+            model = parse_bmd(model_path)
+            for mesh in model.get("meshes", []):
+                texture = mesh.get("texture", "")
+                texture_path = next((candidate for extension in (".OZJ", ".OZT", ".jpg", ".tga")
+                                     if (candidate := self.object_model_dir / f"{texture}{extension}").is_file()), None)
+                preview = image_from_resource(texture_path) if texture_path else None
+                mesh["preview_color"] = preview.resize((1, 1)).getpixel((0, 0)) if preview else (158, 143, 105)
+            self.object_models[type_id] = model
+            return model
+        except (OSError, ValueError, struct.error):
+            return None
 
     def _load_palette(self, folder: Path) -> None:
         self.palette.delete(0, "end")
@@ -302,6 +410,20 @@ class MapEditor(tk.Tk):
     def render_map(self) -> None:
         if not hasattr(self, "canvas"):
             return
+        self.canvas.delete("all")
+        if self.view_mode.get() == "3D" and self.mapping is not None:
+            width = max(800, self.canvas.winfo_width())
+            height = max(600, self.canvas.winfo_height())
+            height_values = self.height_values if self.height_values is not None else bytearray(CELL_COUNT)
+            for type_id in {obj.type_id for obj in self.objects}:
+                self._get_object_model(type_id)
+            image = self.viewport3d.render(width, height, self.mapping, height_values,
+                                           self.tile_colors, self.objects, self.object_models,
+                                           self.mode.get(), self.attributes.values if self.attributes else None)
+            self._photo = ImageTk.PhotoImage(image)
+            self.canvas.create_image(0, 0, image=self._photo, anchor="nw")
+            self.canvas.configure(scrollregion=(0, 0, image.width, image.height))
+            return
         zoom = max(1, int(self.zoom.get()))
         mode = self._tab_name()
         image = Image.new("RGB", (256, 256))
@@ -315,7 +437,6 @@ class MapEditor(tk.Tk):
             for y in range(0, 256, 16): draw.line((0, y, 255, y), fill=(18, 20, 23))
         image = image.resize((256 * zoom, 256 * zoom), Image.Resampling.NEAREST)
         self._photo = ImageTk.PhotoImage(image)
-        self.canvas.delete("all")
         self.canvas.create_image(0, 0, image=self._photo, anchor="nw")
         self.canvas.configure(scrollregion=(0, 0, image.width, image.height))
         self._draw_objects()
@@ -336,6 +457,39 @@ class MapEditor(tk.Tk):
         return x, y
 
     def _begin_stroke(self, event) -> None:
+        if self.view_mode.get() == "3D":
+            cell = self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
+            if cell is None:
+                return
+            if self.mode.get() == "Objects" and event.num == 1:
+                object_index = self.viewport3d.pick_object(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
+                if object_index is not None:
+                    self._object_selected = object_index
+                    self.object_tree.selection_set(str(object_index))
+                    obj = self.objects[object_index]
+                    self._object_grab_offset = (obj.x - cell[0] * 100.0, obj.y - cell[1] * 100.0)
+                    self._object_dragging = True
+                    self.render_map()
+                    return
+                z = self.height_values[cell[1] * 256 + cell[0]] * 1.5 if self.height_values else 0.0
+                obj = formats.MapObject(self.model_type.get(), cell[0] * 100.0, cell[1] * 100.0,
+                                        z, 0.0, 0.0, 0.0, 1.0)
+                self.objects.append(obj)
+                self._object_selected = len(self.objects) - 1
+                self._refresh_objects()
+                self.object_tree.selection_set(str(self._object_selected))
+                self._object_dragging = True
+                self._object_grab_offset = (0.0, 0.0)
+                self.render_map()
+                return
+            if self.folder is None:
+                return
+            self._stroke_snapshot = self._snapshot()
+            self._stroke_active = True
+            self._active_button = event.num
+            self._last_cell = None
+            self._paint_cell(cell, event.num)
+            return
         cell = self._canvas_cell(event)
         if cell is None or self.folder is None: return
         self._stroke_snapshot = self._snapshot()
@@ -345,13 +499,42 @@ class MapEditor(tk.Tk):
         self._paint_cell(cell, self._active_button)
 
     def _paint_motion(self, event) -> None:
+        if self.view_mode.get() == "3D" and self._object_dragging and self._object_selected is not None:
+            cell = self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
+            if cell:
+                obj = self.objects[self._object_selected]
+                obj.x = max(0.0, min(25500.0, cell[0] * 100.0 + self._object_grab_offset[0]))
+                obj.y = max(0.0, min(25500.0, cell[1] * 100.0 + self._object_grab_offset[1]))
+                if self.height_values is not None:
+                    obj.z = self.height_values[cell[1] * 256 + cell[0]] * 1.5
+                self._refresh_objects()
+                self.object_tree.selection_set(str(self._object_selected))
+                self.render_map()
+            return
         if not self._stroke_active: return
-        cell = self._canvas_cell(event)
+        cell = (self.viewport3d.pick_cell(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y)) if self.view_mode.get() == "3D"
+                else self._canvas_cell(event))
         if cell is not None: self._paint_cell(cell, self._active_button)
 
     def _end_stroke(self, _event=None) -> None:
         self._stroke_active = False
+        self._object_dragging = False
         self._last_cell = None
+
+    def _orbit_start(self, event) -> None:
+        if self.view_mode.get() == "3D":
+            self._orbit_last = (event.x, event.y)
+
+    def _orbit_motion(self, event) -> None:
+        if self.view_mode.get() != "3D" or self._orbit_last is None:
+            return
+        x, y = self._orbit_last
+        self.viewport3d.orbit(event.x - x, event.y - y)
+        self._orbit_last = (event.x, event.y)
+        self.render_map()
+
+    def _orbit_end(self, _event=None) -> None:
+        self._orbit_last = None
 
     def _snapshot(self):
         if self.mode.get() == "Texture" and self.mapping:
@@ -412,6 +595,10 @@ class MapEditor(tk.Tk):
         self.render_map()
 
     def _wheel(self, event) -> None:
+        if self.view_mode.get() == "3D":
+            self.viewport3d.zoom(event.delta)
+            self.render_map()
+            return
         values = (2, 3, 4, 6, 8)
         current = values.index(self.zoom.get()) if self.zoom.get() in values else 1
         next_index = max(0, min(len(values)-1, current + (1 if event.delta > 0 else -1)))
